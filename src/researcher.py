@@ -364,7 +364,7 @@ def render_exports(store: StudyStore, paths: Paths) -> None:
     columns[0].download_button("Survey responses CSV", _csv_bytes(surveys), "survey_responses.csv", "text/csv")
     columns[1].download_button("Trial responses CSV", _csv_bytes(responses), "trial_responses.csv", "text/csv")
     st.download_button("Analysis-ready trial table", _csv_bytes(trials), "analysis_ready_trials.csv", "text/csv")
-    if paths.database.exists():
+    if store.is_sqlite and paths.database.exists():
         st.download_button("SQLite database", paths.database.read_bytes(), "study.db", "application/octet-stream")
     st.markdown(
         "The analysis-ready table contains reference-alignment, calibration, evidence-conflict, and reliance-category fields. "
