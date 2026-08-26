@@ -1,0 +1,253 @@
+id,session_id,section,question_code,response_code,response_label,response_json,created_at
+1,ef6afff9-99ca-4808-be2e-709bacf5b1bf,background,role,analytical_scientist,Analytical scientist,"""Analytical scientist""",2026-08-05T16:50:43.084589+00:00
+2,ef6afff9-99ca-4808-be2e-709bacf5b1bf,background,completed,yes,yes,"""yes""",2026-08-05T16:50:43.086915+00:00
+3,ef6afff9-99ca-4808-be2e-709bacf5b1bf,current_practice,completed,yes,yes,"""yes""",2026-08-05T16:50:43.089326+00:00
+4,ef6afff9-99ca-4808-be2e-709bacf5b1bf,comprehension,score,4,4/4,"{""score"": 4, ""total"": 4}",2026-08-05T16:50:43.091561+00:00
+5,ef6afff9-99ca-4808-be2e-709bacf5b1bf,comprehension,completed,yes,yes,"""yes""",2026-08-05T16:50:43.093727+00:00
+6,ef6afff9-99ca-4808-be2e-709bacf5b1bf,post_baseline,usefulness,3,3,3,2026-08-05T16:50:43.123745+00:00
+7,ef6afff9-99ca-4808-be2e-709bacf5b1bf,post_baseline,clarity,2,2,2,2026-08-05T16:50:43.127237+00:00
+8,ef6afff9-99ca-4808-be2e-709bacf5b1bf,post_baseline,mental_effort,3,3,3,2026-08-05T16:50:43.129422+00:00
+9,ef6afff9-99ca-4808-be2e-709bacf5b1bf,post_baseline,appropriate_reliance,3,3,3,2026-08-05T16:50:43.132087+00:00
+10,ef6afff9-99ca-4808-be2e-709bacf5b1bf,post_baseline,completed,yes,yes,"""yes""",2026-08-05T16:50:43.134302+00:00
+11,ef6afff9-99ca-4808-be2e-709bacf5b1bf,post_peakaboo,usefulness,5,5,5,2026-08-05T16:50:43.136765+00:00
+12,ef6afff9-99ca-4808-be2e-709bacf5b1bf,post_peakaboo,clarity,5,5,5,2026-08-05T16:50:43.139205+00:00
+13,ef6afff9-99ca-4808-be2e-709bacf5b1bf,post_peakaboo,mental_effort,4,4,4,2026-08-05T16:50:43.141767+00:00
+14,ef6afff9-99ca-4808-be2e-709bacf5b1bf,post_peakaboo,appropriate_reliance,5,5,5,2026-08-05T16:50:43.144570+00:00
+15,ef6afff9-99ca-4808-be2e-709bacf5b1bf,post_peakaboo,completed,yes,yes,"""yes""",2026-08-05T16:50:43.147293+00:00
+16,ef6afff9-99ca-4808-be2e-709bacf5b1bf,post_peakaboo_recommendation,usefulness,3,3,3,2026-08-05T16:50:43.150898+00:00
+17,ef6afff9-99ca-4808-be2e-709bacf5b1bf,post_peakaboo_recommendation,clarity,2,2,2,2026-08-05T16:50:43.153011+00:00
+18,ef6afff9-99ca-4808-be2e-709bacf5b1bf,post_peakaboo_recommendation,mental_effort,4,4,4,2026-08-05T16:50:43.155125+00:00
+19,ef6afff9-99ca-4808-be2e-709bacf5b1bf,post_peakaboo_recommendation,appropriate_reliance,2,2,2,2026-08-05T16:50:43.157184+00:00
+20,ef6afff9-99ca-4808-be2e-709bacf5b1bf,post_peakaboo_recommendation,completed,yes,yes,"""yes""",2026-08-05T16:50:43.166547+00:00
+21,ef6afff9-99ca-4808-be2e-709bacf5b1bf,final,completed,yes,yes,"""yes""",2026-08-05T16:50:43.168702+00:00
+22,e9459b53-bfb9-4fc4-b403-b8a39c922921,background,role,analytical_scientist,Analytical scientist,"""Analytical scientist""",2026-08-05T16:50:43.193115+00:00
+23,e9459b53-bfb9-4fc4-b403-b8a39c922921,background,completed,yes,yes,"""yes""",2026-08-05T16:50:43.195408+00:00
+24,e9459b53-bfb9-4fc4-b403-b8a39c922921,current_practice,completed,yes,yes,"""yes""",2026-08-05T16:50:43.198242+00:00
+25,e9459b53-bfb9-4fc4-b403-b8a39c922921,comprehension,score,4,4/4,"{""score"": 4, ""total"": 4}",2026-08-05T16:50:43.200868+00:00
+26,e9459b53-bfb9-4fc4-b403-b8a39c922921,comprehension,completed,yes,yes,"""yes""",2026-08-05T16:50:43.203510+00:00
+27,e9459b53-bfb9-4fc4-b403-b8a39c922921,post_baseline,usefulness,3,3,3,2026-08-05T16:50:43.228813+00:00
+28,e9459b53-bfb9-4fc4-b403-b8a39c922921,post_baseline,clarity,3,3,3,2026-08-05T16:50:43.230859+00:00
+29,e9459b53-bfb9-4fc4-b403-b8a39c922921,post_baseline,mental_effort,4,4,4,2026-08-05T16:50:43.232819+00:00
+30,e9459b53-bfb9-4fc4-b403-b8a39c922921,post_baseline,appropriate_reliance,4,4,4,2026-08-05T16:50:43.234735+00:00
+31,e9459b53-bfb9-4fc4-b403-b8a39c922921,post_baseline,completed,yes,yes,"""yes""",2026-08-05T16:50:43.238195+00:00
+32,e9459b53-bfb9-4fc4-b403-b8a39c922921,post_peakaboo,usefulness,4,4,4,2026-08-05T16:50:43.240543+00:00
+33,e9459b53-bfb9-4fc4-b403-b8a39c922921,post_peakaboo,clarity,4,4,4,2026-08-05T16:50:43.242993+00:00
+34,e9459b53-bfb9-4fc4-b403-b8a39c922921,post_peakaboo,mental_effort,5,5,5,2026-08-05T16:50:43.245785+00:00
+35,e9459b53-bfb9-4fc4-b403-b8a39c922921,post_peakaboo,appropriate_reliance,3,3,3,2026-08-05T16:50:43.248973+00:00
+36,e9459b53-bfb9-4fc4-b403-b8a39c922921,post_peakaboo,completed,yes,yes,"""yes""",2026-08-05T16:50:43.252818+00:00
+37,e9459b53-bfb9-4fc4-b403-b8a39c922921,post_peakaboo_recommendation,usefulness,5,5,5,2026-08-05T16:50:43.256326+00:00
+38,e9459b53-bfb9-4fc4-b403-b8a39c922921,post_peakaboo_recommendation,clarity,4,4,4,2026-08-05T16:50:43.258899+00:00
+39,e9459b53-bfb9-4fc4-b403-b8a39c922921,post_peakaboo_recommendation,mental_effort,2,2,2,2026-08-05T16:50:43.268950+00:00
+40,e9459b53-bfb9-4fc4-b403-b8a39c922921,post_peakaboo_recommendation,appropriate_reliance,4,4,4,2026-08-05T16:50:43.272433+00:00
+41,e9459b53-bfb9-4fc4-b403-b8a39c922921,post_peakaboo_recommendation,completed,yes,yes,"""yes""",2026-08-05T16:50:43.274833+00:00
+42,e9459b53-bfb9-4fc4-b403-b8a39c922921,final,completed,yes,yes,"""yes""",2026-08-05T16:50:43.277424+00:00
+43,80bacd2f-b280-46ae-9ddb-3fc2a5fec135,background,role,analytical_scientist,Analytical scientist,"""Analytical scientist""",2026-08-05T16:50:43.298807+00:00
+44,80bacd2f-b280-46ae-9ddb-3fc2a5fec135,background,completed,yes,yes,"""yes""",2026-08-05T16:50:43.301454+00:00
+45,80bacd2f-b280-46ae-9ddb-3fc2a5fec135,current_practice,completed,yes,yes,"""yes""",2026-08-05T16:50:43.304134+00:00
+46,80bacd2f-b280-46ae-9ddb-3fc2a5fec135,comprehension,score,4,4/4,"{""score"": 4, ""total"": 4}",2026-08-05T16:50:43.307360+00:00
+47,80bacd2f-b280-46ae-9ddb-3fc2a5fec135,comprehension,completed,yes,yes,"""yes""",2026-08-05T16:50:43.310305+00:00
+48,80bacd2f-b280-46ae-9ddb-3fc2a5fec135,post_baseline,usefulness,5,5,5,2026-08-05T16:50:43.334439+00:00
+49,80bacd2f-b280-46ae-9ddb-3fc2a5fec135,post_baseline,clarity,5,5,5,2026-08-05T16:50:43.337147+00:00
+50,80bacd2f-b280-46ae-9ddb-3fc2a5fec135,post_baseline,mental_effort,5,5,5,2026-08-05T16:50:43.339514+00:00
+51,80bacd2f-b280-46ae-9ddb-3fc2a5fec135,post_baseline,appropriate_reliance,2,2,2,2026-08-05T16:50:43.341772+00:00
+52,80bacd2f-b280-46ae-9ddb-3fc2a5fec135,post_baseline,completed,yes,yes,"""yes""",2026-08-05T16:50:43.344544+00:00
+53,80bacd2f-b280-46ae-9ddb-3fc2a5fec135,post_peakaboo,usefulness,3,3,3,2026-08-05T16:50:43.346718+00:00
+54,80bacd2f-b280-46ae-9ddb-3fc2a5fec135,post_peakaboo,clarity,3,3,3,2026-08-05T16:50:43.350207+00:00
+55,80bacd2f-b280-46ae-9ddb-3fc2a5fec135,post_peakaboo,mental_effort,5,5,5,2026-08-05T16:50:43.352819+00:00
+56,80bacd2f-b280-46ae-9ddb-3fc2a5fec135,post_peakaboo,appropriate_reliance,4,4,4,2026-08-05T16:50:43.355109+00:00
+57,80bacd2f-b280-46ae-9ddb-3fc2a5fec135,post_peakaboo,completed,yes,yes,"""yes""",2026-08-05T16:50:43.357228+00:00
+58,80bacd2f-b280-46ae-9ddb-3fc2a5fec135,post_peakaboo_recommendation,usefulness,5,5,5,2026-08-05T16:50:43.359593+00:00
+59,80bacd2f-b280-46ae-9ddb-3fc2a5fec135,post_peakaboo_recommendation,clarity,3,3,3,2026-08-05T16:50:43.362543+00:00
+60,80bacd2f-b280-46ae-9ddb-3fc2a5fec135,post_peakaboo_recommendation,mental_effort,4,4,4,2026-08-05T16:50:43.365082+00:00
+61,80bacd2f-b280-46ae-9ddb-3fc2a5fec135,post_peakaboo_recommendation,appropriate_reliance,5,5,5,2026-08-05T16:50:43.367471+00:00
+62,80bacd2f-b280-46ae-9ddb-3fc2a5fec135,post_peakaboo_recommendation,completed,yes,yes,"""yes""",2026-08-05T16:50:43.369911+00:00
+63,80bacd2f-b280-46ae-9ddb-3fc2a5fec135,final,completed,yes,yes,"""yes""",2026-08-05T16:50:43.373262+00:00
+64,503410c3-68e7-4660-9086-a79193b23af1,background,role,analytical_scientist,Analytical scientist,"""Analytical scientist""",2026-08-05T16:50:43.402292+00:00
+65,503410c3-68e7-4660-9086-a79193b23af1,background,completed,yes,yes,"""yes""",2026-08-05T16:50:43.404797+00:00
+66,503410c3-68e7-4660-9086-a79193b23af1,current_practice,completed,yes,yes,"""yes""",2026-08-05T16:50:43.407379+00:00
+67,503410c3-68e7-4660-9086-a79193b23af1,comprehension,score,4,4/4,"{""score"": 4, ""total"": 4}",2026-08-05T16:50:43.409366+00:00
+68,503410c3-68e7-4660-9086-a79193b23af1,comprehension,completed,yes,yes,"""yes""",2026-08-05T16:50:43.411525+00:00
+69,503410c3-68e7-4660-9086-a79193b23af1,post_baseline,usefulness,5,5,5,2026-08-05T16:50:43.436933+00:00
+70,503410c3-68e7-4660-9086-a79193b23af1,post_baseline,clarity,5,5,5,2026-08-05T16:50:43.438876+00:00
+71,503410c3-68e7-4660-9086-a79193b23af1,post_baseline,mental_effort,5,5,5,2026-08-05T16:50:43.441465+00:00
+72,503410c3-68e7-4660-9086-a79193b23af1,post_baseline,appropriate_reliance,5,5,5,2026-08-05T16:50:43.443980+00:00
+73,503410c3-68e7-4660-9086-a79193b23af1,post_baseline,completed,yes,yes,"""yes""",2026-08-05T16:50:43.446223+00:00
+74,503410c3-68e7-4660-9086-a79193b23af1,post_peakaboo,usefulness,4,4,4,2026-08-05T16:50:43.448683+00:00
+75,503410c3-68e7-4660-9086-a79193b23af1,post_peakaboo,clarity,3,3,3,2026-08-05T16:50:43.450688+00:00
+76,503410c3-68e7-4660-9086-a79193b23af1,post_peakaboo,mental_effort,2,2,2,2026-08-05T16:50:43.452941+00:00
+77,503410c3-68e7-4660-9086-a79193b23af1,post_peakaboo,appropriate_reliance,5,5,5,2026-08-05T16:50:43.456461+00:00
+78,503410c3-68e7-4660-9086-a79193b23af1,post_peakaboo,completed,yes,yes,"""yes""",2026-08-05T16:50:43.458913+00:00
+79,503410c3-68e7-4660-9086-a79193b23af1,post_peakaboo_recommendation,usefulness,4,4,4,2026-08-05T16:50:43.461000+00:00
+80,503410c3-68e7-4660-9086-a79193b23af1,post_peakaboo_recommendation,clarity,4,4,4,2026-08-05T16:50:43.464356+00:00
+81,503410c3-68e7-4660-9086-a79193b23af1,post_peakaboo_recommendation,mental_effort,3,3,3,2026-08-05T16:50:43.467277+00:00
+82,503410c3-68e7-4660-9086-a79193b23af1,post_peakaboo_recommendation,appropriate_reliance,4,4,4,2026-08-05T16:50:43.469443+00:00
+83,503410c3-68e7-4660-9086-a79193b23af1,post_peakaboo_recommendation,completed,yes,yes,"""yes""",2026-08-05T16:50:43.471991+00:00
+84,503410c3-68e7-4660-9086-a79193b23af1,final,completed,yes,yes,"""yes""",2026-08-05T16:50:43.474236+00:00
+85,13313f9a-3141-4d77-b28b-b8620f18e479,background,role,analytical_scientist,Analytical scientist,"""Analytical scientist""",2026-08-05T16:50:43.496096+00:00
+86,13313f9a-3141-4d77-b28b-b8620f18e479,background,completed,yes,yes,"""yes""",2026-08-05T16:50:43.498959+00:00
+87,13313f9a-3141-4d77-b28b-b8620f18e479,current_practice,completed,yes,yes,"""yes""",2026-08-05T16:50:43.501736+00:00
+88,13313f9a-3141-4d77-b28b-b8620f18e479,comprehension,score,4,4/4,"{""score"": 4, ""total"": 4}",2026-08-05T16:50:43.504630+00:00
+89,13313f9a-3141-4d77-b28b-b8620f18e479,comprehension,completed,yes,yes,"""yes""",2026-08-05T16:50:43.507021+00:00
+90,13313f9a-3141-4d77-b28b-b8620f18e479,post_baseline,usefulness,5,5,5,2026-08-05T16:50:43.532975+00:00
+91,13313f9a-3141-4d77-b28b-b8620f18e479,post_baseline,clarity,3,3,3,2026-08-05T16:50:43.535147+00:00
+92,13313f9a-3141-4d77-b28b-b8620f18e479,post_baseline,mental_effort,4,4,4,2026-08-05T16:50:43.538793+00:00
+93,13313f9a-3141-4d77-b28b-b8620f18e479,post_baseline,appropriate_reliance,2,2,2,2026-08-05T16:50:43.540885+00:00
+94,13313f9a-3141-4d77-b28b-b8620f18e479,post_baseline,completed,yes,yes,"""yes""",2026-08-05T16:50:43.543028+00:00
+95,13313f9a-3141-4d77-b28b-b8620f18e479,post_peakaboo,usefulness,5,5,5,2026-08-05T16:50:43.545256+00:00
+96,13313f9a-3141-4d77-b28b-b8620f18e479,post_peakaboo,clarity,3,3,3,2026-08-05T16:50:43.547351+00:00
+97,13313f9a-3141-4d77-b28b-b8620f18e479,post_peakaboo,mental_effort,5,5,5,2026-08-05T16:50:43.549815+00:00
+98,13313f9a-3141-4d77-b28b-b8620f18e479,post_peakaboo,appropriate_reliance,4,4,4,2026-08-05T16:50:43.552176+00:00
+99,13313f9a-3141-4d77-b28b-b8620f18e479,post_peakaboo,completed,yes,yes,"""yes""",2026-08-05T16:50:43.554217+00:00
+100,13313f9a-3141-4d77-b28b-b8620f18e479,post_peakaboo_recommendation,usefulness,5,5,5,2026-08-05T16:50:43.556476+00:00
+101,13313f9a-3141-4d77-b28b-b8620f18e479,post_peakaboo_recommendation,clarity,3,3,3,2026-08-05T16:50:43.559510+00:00
+102,13313f9a-3141-4d77-b28b-b8620f18e479,post_peakaboo_recommendation,mental_effort,2,2,2,2026-08-05T16:50:43.561851+00:00
+103,13313f9a-3141-4d77-b28b-b8620f18e479,post_peakaboo_recommendation,appropriate_reliance,5,5,5,2026-08-05T16:50:43.564467+00:00
+104,13313f9a-3141-4d77-b28b-b8620f18e479,post_peakaboo_recommendation,completed,yes,yes,"""yes""",2026-08-05T16:50:43.567124+00:00
+105,13313f9a-3141-4d77-b28b-b8620f18e479,final,completed,yes,yes,"""yes""",2026-08-05T16:50:43.569874+00:00
+106,a196a3dd-4f8c-4633-a102-6a695aa976df,background,role,analytical_scientist,Analytical scientist,"""Analytical scientist""",2026-08-05T16:50:43.590637+00:00
+107,a196a3dd-4f8c-4633-a102-6a695aa976df,background,completed,yes,yes,"""yes""",2026-08-05T16:50:43.593660+00:00
+108,a196a3dd-4f8c-4633-a102-6a695aa976df,current_practice,completed,yes,yes,"""yes""",2026-08-05T16:50:43.595767+00:00
+109,a196a3dd-4f8c-4633-a102-6a695aa976df,comprehension,score,4,4/4,"{""score"": 4, ""total"": 4}",2026-08-05T16:50:43.598232+00:00
+110,a196a3dd-4f8c-4633-a102-6a695aa976df,comprehension,completed,yes,yes,"""yes""",2026-08-05T16:50:43.600539+00:00
+111,a196a3dd-4f8c-4633-a102-6a695aa976df,post_baseline,usefulness,3,3,3,2026-08-05T16:50:43.623941+00:00
+112,a196a3dd-4f8c-4633-a102-6a695aa976df,post_baseline,clarity,5,5,5,2026-08-05T16:50:43.626114+00:00
+113,a196a3dd-4f8c-4633-a102-6a695aa976df,post_baseline,mental_effort,2,2,2,2026-08-05T16:50:43.628169+00:00
+114,a196a3dd-4f8c-4633-a102-6a695aa976df,post_baseline,appropriate_reliance,5,5,5,2026-08-05T16:50:43.630283+00:00
+115,a196a3dd-4f8c-4633-a102-6a695aa976df,post_baseline,completed,yes,yes,"""yes""",2026-08-05T16:50:43.633488+00:00
+116,a196a3dd-4f8c-4633-a102-6a695aa976df,post_peakaboo,usefulness,5,5,5,2026-08-05T16:50:43.635506+00:00
+117,a196a3dd-4f8c-4633-a102-6a695aa976df,post_peakaboo,clarity,2,2,2,2026-08-05T16:50:43.637707+00:00
+118,a196a3dd-4f8c-4633-a102-6a695aa976df,post_peakaboo,mental_effort,5,5,5,2026-08-05T16:50:43.640492+00:00
+119,a196a3dd-4f8c-4633-a102-6a695aa976df,post_peakaboo,appropriate_reliance,5,5,5,2026-08-05T16:50:43.642680+00:00
+120,a196a3dd-4f8c-4633-a102-6a695aa976df,post_peakaboo,completed,yes,yes,"""yes""",2026-08-05T16:50:43.652820+00:00
+121,a196a3dd-4f8c-4633-a102-6a695aa976df,post_peakaboo_recommendation,usefulness,3,3,3,2026-08-05T16:50:43.654988+00:00
+122,a196a3dd-4f8c-4633-a102-6a695aa976df,post_peakaboo_recommendation,clarity,3,3,3,2026-08-05T16:50:43.658135+00:00
+123,a196a3dd-4f8c-4633-a102-6a695aa976df,post_peakaboo_recommendation,mental_effort,4,4,4,2026-08-05T16:50:43.661556+00:00
+124,a196a3dd-4f8c-4633-a102-6a695aa976df,post_peakaboo_recommendation,appropriate_reliance,4,4,4,2026-08-05T16:50:43.664793+00:00
+125,a196a3dd-4f8c-4633-a102-6a695aa976df,post_peakaboo_recommendation,completed,yes,yes,"""yes""",2026-08-05T16:50:43.666951+00:00
+126,a196a3dd-4f8c-4633-a102-6a695aa976df,final,completed,yes,yes,"""yes""",2026-08-05T16:50:43.669169+00:00
+127,97a247ad-d7eb-4d30-94cc-83253931b41d,background,role,analytical_scientist,Analytical scientist,"""Analytical scientist""",2026-08-05T16:50:43.689032+00:00
+128,97a247ad-d7eb-4d30-94cc-83253931b41d,background,completed,yes,yes,"""yes""",2026-08-05T16:50:43.691149+00:00
+129,97a247ad-d7eb-4d30-94cc-83253931b41d,current_practice,completed,yes,yes,"""yes""",2026-08-05T16:50:43.693460+00:00
+130,97a247ad-d7eb-4d30-94cc-83253931b41d,comprehension,score,4,4/4,"{""score"": 4, ""total"": 4}",2026-08-05T16:50:43.696645+00:00
+131,97a247ad-d7eb-4d30-94cc-83253931b41d,comprehension,completed,yes,yes,"""yes""",2026-08-05T16:50:43.698558+00:00
+132,97a247ad-d7eb-4d30-94cc-83253931b41d,post_baseline,usefulness,5,5,5,2026-08-05T16:50:43.725894+00:00
+133,97a247ad-d7eb-4d30-94cc-83253931b41d,post_baseline,clarity,2,2,2,2026-08-05T16:50:43.728318+00:00
+134,97a247ad-d7eb-4d30-94cc-83253931b41d,post_baseline,mental_effort,2,2,2,2026-08-05T16:50:43.730651+00:00
+135,97a247ad-d7eb-4d30-94cc-83253931b41d,post_baseline,appropriate_reliance,2,2,2,2026-08-05T16:50:43.732958+00:00
+136,97a247ad-d7eb-4d30-94cc-83253931b41d,post_baseline,completed,yes,yes,"""yes""",2026-08-05T16:50:43.735077+00:00
+137,97a247ad-d7eb-4d30-94cc-83253931b41d,post_peakaboo,usefulness,3,3,3,2026-08-05T16:50:43.737480+00:00
+138,97a247ad-d7eb-4d30-94cc-83253931b41d,post_peakaboo,clarity,3,3,3,2026-08-05T16:50:43.739760+00:00
+139,97a247ad-d7eb-4d30-94cc-83253931b41d,post_peakaboo,mental_effort,4,4,4,2026-08-05T16:50:43.743147+00:00
+140,97a247ad-d7eb-4d30-94cc-83253931b41d,post_peakaboo,appropriate_reliance,5,5,5,2026-08-05T16:50:43.745678+00:00
+141,97a247ad-d7eb-4d30-94cc-83253931b41d,post_peakaboo,completed,yes,yes,"""yes""",2026-08-05T16:50:43.747760+00:00
+142,97a247ad-d7eb-4d30-94cc-83253931b41d,post_peakaboo_recommendation,usefulness,5,5,5,2026-08-05T16:50:43.750275+00:00
+143,97a247ad-d7eb-4d30-94cc-83253931b41d,post_peakaboo_recommendation,clarity,5,5,5,2026-08-05T16:50:43.752873+00:00
+144,97a247ad-d7eb-4d30-94cc-83253931b41d,post_peakaboo_recommendation,mental_effort,3,3,3,2026-08-05T16:50:43.761545+00:00
+145,97a247ad-d7eb-4d30-94cc-83253931b41d,post_peakaboo_recommendation,appropriate_reliance,4,4,4,2026-08-05T16:50:43.763779+00:00
+146,97a247ad-d7eb-4d30-94cc-83253931b41d,post_peakaboo_recommendation,completed,yes,yes,"""yes""",2026-08-05T16:50:43.766041+00:00
+147,97a247ad-d7eb-4d30-94cc-83253931b41d,final,completed,yes,yes,"""yes""",2026-08-05T16:50:43.769356+00:00
+148,c63f09f8-6992-4d72-93a1-95a81f0d8c2a,background,role,analytical_scientist,Analytical scientist,"""Analytical scientist""",2026-08-05T16:50:43.789981+00:00
+149,c63f09f8-6992-4d72-93a1-95a81f0d8c2a,background,completed,yes,yes,"""yes""",2026-08-05T16:50:43.792227+00:00
+150,c63f09f8-6992-4d72-93a1-95a81f0d8c2a,current_practice,completed,yes,yes,"""yes""",2026-08-05T16:50:43.794257+00:00
+151,c63f09f8-6992-4d72-93a1-95a81f0d8c2a,comprehension,score,4,4/4,"{""score"": 4, ""total"": 4}",2026-08-05T16:50:43.796231+00:00
+152,c63f09f8-6992-4d72-93a1-95a81f0d8c2a,comprehension,completed,yes,yes,"""yes""",2026-08-05T16:50:43.798664+00:00
+153,c63f09f8-6992-4d72-93a1-95a81f0d8c2a,post_baseline,usefulness,5,5,5,2026-08-05T16:50:43.824958+00:00
+154,c63f09f8-6992-4d72-93a1-95a81f0d8c2a,post_baseline,clarity,2,2,2,2026-08-05T16:50:43.827143+00:00
+155,c63f09f8-6992-4d72-93a1-95a81f0d8c2a,post_baseline,mental_effort,2,2,2,2026-08-05T16:50:43.829385+00:00
+156,c63f09f8-6992-4d72-93a1-95a81f0d8c2a,post_baseline,appropriate_reliance,3,3,3,2026-08-05T16:50:43.831271+00:00
+157,c63f09f8-6992-4d72-93a1-95a81f0d8c2a,post_baseline,completed,yes,yes,"""yes""",2026-08-05T16:50:43.833238+00:00
+158,c63f09f8-6992-4d72-93a1-95a81f0d8c2a,post_peakaboo,usefulness,3,3,3,2026-08-05T16:50:43.835291+00:00
+159,c63f09f8-6992-4d72-93a1-95a81f0d8c2a,post_peakaboo,clarity,3,3,3,2026-08-05T16:50:43.837368+00:00
+160,c63f09f8-6992-4d72-93a1-95a81f0d8c2a,post_peakaboo,mental_effort,5,5,5,2026-08-05T16:50:43.839266+00:00
+161,c63f09f8-6992-4d72-93a1-95a81f0d8c2a,post_peakaboo,appropriate_reliance,3,3,3,2026-08-05T16:50:43.841182+00:00
+162,c63f09f8-6992-4d72-93a1-95a81f0d8c2a,post_peakaboo,completed,yes,yes,"""yes""",2026-08-05T16:50:43.844719+00:00
+163,c63f09f8-6992-4d72-93a1-95a81f0d8c2a,post_peakaboo_recommendation,usefulness,5,5,5,2026-08-05T16:50:43.847029+00:00
+164,c63f09f8-6992-4d72-93a1-95a81f0d8c2a,post_peakaboo_recommendation,clarity,3,3,3,2026-08-05T16:50:43.849181+00:00
+165,c63f09f8-6992-4d72-93a1-95a81f0d8c2a,post_peakaboo_recommendation,mental_effort,5,5,5,2026-08-05T16:50:43.851591+00:00
+166,c63f09f8-6992-4d72-93a1-95a81f0d8c2a,post_peakaboo_recommendation,appropriate_reliance,2,2,2,2026-08-05T16:50:43.853915+00:00
+167,c63f09f8-6992-4d72-93a1-95a81f0d8c2a,post_peakaboo_recommendation,completed,yes,yes,"""yes""",2026-08-05T16:50:43.856060+00:00
+168,c63f09f8-6992-4d72-93a1-95a81f0d8c2a,final,completed,yes,yes,"""yes""",2026-08-05T16:50:43.858079+00:00
+169,2b53b17c-752c-4187-8d1c-f380458444c5,background,role,analytical_scientist,Analytical scientist,"""Analytical scientist""",2026-08-05T16:50:43.879559+00:00
+170,2b53b17c-752c-4187-8d1c-f380458444c5,background,completed,yes,yes,"""yes""",2026-08-05T16:50:43.881713+00:00
+171,2b53b17c-752c-4187-8d1c-f380458444c5,current_practice,completed,yes,yes,"""yes""",2026-08-05T16:50:43.883934+00:00
+172,2b53b17c-752c-4187-8d1c-f380458444c5,comprehension,score,4,4/4,"{""score"": 4, ""total"": 4}",2026-08-05T16:50:43.892297+00:00
+173,2b53b17c-752c-4187-8d1c-f380458444c5,comprehension,completed,yes,yes,"""yes""",2026-08-05T16:50:43.895076+00:00
+174,2b53b17c-752c-4187-8d1c-f380458444c5,post_baseline,usefulness,5,5,5,2026-08-05T16:50:43.920047+00:00
+175,2b53b17c-752c-4187-8d1c-f380458444c5,post_baseline,clarity,2,2,2,2026-08-05T16:50:43.923325+00:00
+176,2b53b17c-752c-4187-8d1c-f380458444c5,post_baseline,mental_effort,4,4,4,2026-08-05T16:50:43.925381+00:00
+177,2b53b17c-752c-4187-8d1c-f380458444c5,post_baseline,appropriate_reliance,5,5,5,2026-08-05T16:50:43.927295+00:00
+178,2b53b17c-752c-4187-8d1c-f380458444c5,post_baseline,completed,yes,yes,"""yes""",2026-08-05T16:50:43.929262+00:00
+179,2b53b17c-752c-4187-8d1c-f380458444c5,post_peakaboo,usefulness,5,5,5,2026-08-05T16:50:43.931372+00:00
+180,2b53b17c-752c-4187-8d1c-f380458444c5,post_peakaboo,clarity,5,5,5,2026-08-05T16:50:43.933544+00:00
+181,2b53b17c-752c-4187-8d1c-f380458444c5,post_peakaboo,mental_effort,4,4,4,2026-08-05T16:50:43.935413+00:00
+182,2b53b17c-752c-4187-8d1c-f380458444c5,post_peakaboo,appropriate_reliance,4,4,4,2026-08-05T16:50:43.937871+00:00
+183,2b53b17c-752c-4187-8d1c-f380458444c5,post_peakaboo,completed,yes,yes,"""yes""",2026-08-05T16:50:43.939930+00:00
+184,2b53b17c-752c-4187-8d1c-f380458444c5,post_peakaboo_recommendation,usefulness,4,4,4,2026-08-05T16:50:43.942976+00:00
+185,2b53b17c-752c-4187-8d1c-f380458444c5,post_peakaboo_recommendation,clarity,4,4,4,2026-08-05T16:50:43.945093+00:00
+186,2b53b17c-752c-4187-8d1c-f380458444c5,post_peakaboo_recommendation,mental_effort,3,3,3,2026-08-05T16:50:43.947043+00:00
+187,2b53b17c-752c-4187-8d1c-f380458444c5,post_peakaboo_recommendation,appropriate_reliance,5,5,5,2026-08-05T16:50:43.949387+00:00
+188,2b53b17c-752c-4187-8d1c-f380458444c5,post_peakaboo_recommendation,completed,yes,yes,"""yes""",2026-08-05T16:50:43.951743+00:00
+189,2b53b17c-752c-4187-8d1c-f380458444c5,final,completed,yes,yes,"""yes""",2026-08-05T16:50:43.954422+00:00
+190,c342fcda-a888-4af9-90ea-b9c69c0bb052,background,role,analytical_scientist,Analytical scientist,"""Analytical scientist""",2026-08-05T16:50:43.981557+00:00
+191,c342fcda-a888-4af9-90ea-b9c69c0bb052,background,completed,yes,yes,"""yes""",2026-08-05T16:50:43.983691+00:00
+192,c342fcda-a888-4af9-90ea-b9c69c0bb052,current_practice,completed,yes,yes,"""yes""",2026-08-05T16:50:43.985646+00:00
+193,c342fcda-a888-4af9-90ea-b9c69c0bb052,comprehension,score,4,4/4,"{""score"": 4, ""total"": 4}",2026-08-05T16:50:43.987659+00:00
+194,c342fcda-a888-4af9-90ea-b9c69c0bb052,comprehension,completed,yes,yes,"""yes""",2026-08-05T16:50:43.989660+00:00
+195,c342fcda-a888-4af9-90ea-b9c69c0bb052,post_baseline,usefulness,3,3,3,2026-08-05T16:50:44.012186+00:00
+196,c342fcda-a888-4af9-90ea-b9c69c0bb052,post_baseline,clarity,4,4,4,2026-08-05T16:50:44.014415+00:00
+197,c342fcda-a888-4af9-90ea-b9c69c0bb052,post_baseline,mental_effort,2,2,2,2026-08-05T16:50:44.016682+00:00
+198,c342fcda-a888-4af9-90ea-b9c69c0bb052,post_baseline,appropriate_reliance,2,2,2,2026-08-05T16:50:44.019183+00:00
+199,c342fcda-a888-4af9-90ea-b9c69c0bb052,post_baseline,completed,yes,yes,"""yes""",2026-08-05T16:50:44.022612+00:00
+200,c342fcda-a888-4af9-90ea-b9c69c0bb052,post_peakaboo,usefulness,5,5,5,2026-08-05T16:50:44.025274+00:00
+201,c342fcda-a888-4af9-90ea-b9c69c0bb052,post_peakaboo,clarity,3,3,3,2026-08-05T16:50:44.027552+00:00
+202,c342fcda-a888-4af9-90ea-b9c69c0bb052,post_peakaboo,mental_effort,2,2,2,2026-08-05T16:50:44.030213+00:00
+203,c342fcda-a888-4af9-90ea-b9c69c0bb052,post_peakaboo,appropriate_reliance,4,4,4,2026-08-05T16:50:44.032413+00:00
+204,c342fcda-a888-4af9-90ea-b9c69c0bb052,post_peakaboo,completed,yes,yes,"""yes""",2026-08-05T16:50:44.034571+00:00
+205,c342fcda-a888-4af9-90ea-b9c69c0bb052,post_peakaboo_recommendation,usefulness,4,4,4,2026-08-05T16:50:44.036627+00:00
+206,c342fcda-a888-4af9-90ea-b9c69c0bb052,post_peakaboo_recommendation,clarity,2,2,2,2026-08-05T16:50:44.038847+00:00
+207,c342fcda-a888-4af9-90ea-b9c69c0bb052,post_peakaboo_recommendation,mental_effort,3,3,3,2026-08-05T16:50:44.041214+00:00
+208,c342fcda-a888-4af9-90ea-b9c69c0bb052,post_peakaboo_recommendation,appropriate_reliance,2,2,2,2026-08-05T16:50:44.044856+00:00
+209,c342fcda-a888-4af9-90ea-b9c69c0bb052,post_peakaboo_recommendation,completed,yes,yes,"""yes""",2026-08-05T16:50:44.047005+00:00
+210,c342fcda-a888-4af9-90ea-b9c69c0bb052,final,completed,yes,yes,"""yes""",2026-08-05T16:50:44.049371+00:00
+211,c772eded-8c5b-49e1-a3bf-ca597ba0a17d,background,role,analytical_scientist,Analytical scientist,"""Analytical scientist""",2026-08-05T16:50:44.070291+00:00
+212,c772eded-8c5b-49e1-a3bf-ca597ba0a17d,background,completed,yes,yes,"""yes""",2026-08-05T16:50:44.072508+00:00
+213,c772eded-8c5b-49e1-a3bf-ca597ba0a17d,current_practice,completed,yes,yes,"""yes""",2026-08-05T16:50:44.076118+00:00
+214,c772eded-8c5b-49e1-a3bf-ca597ba0a17d,comprehension,score,4,4/4,"{""score"": 4, ""total"": 4}",2026-08-05T16:50:44.078211+00:00
+215,c772eded-8c5b-49e1-a3bf-ca597ba0a17d,comprehension,completed,yes,yes,"""yes""",2026-08-05T16:50:44.086909+00:00
+216,c772eded-8c5b-49e1-a3bf-ca597ba0a17d,post_baseline,usefulness,3,3,3,2026-08-05T16:50:44.111772+00:00
+217,c772eded-8c5b-49e1-a3bf-ca597ba0a17d,post_baseline,clarity,5,5,5,2026-08-05T16:50:44.114283+00:00
+218,c772eded-8c5b-49e1-a3bf-ca597ba0a17d,post_baseline,mental_effort,3,3,3,2026-08-05T16:50:44.116779+00:00
+219,c772eded-8c5b-49e1-a3bf-ca597ba0a17d,post_baseline,appropriate_reliance,4,4,4,2026-08-05T16:50:44.122032+00:00
+220,c772eded-8c5b-49e1-a3bf-ca597ba0a17d,post_baseline,completed,yes,yes,"""yes""",2026-08-05T16:50:44.124056+00:00
+221,c772eded-8c5b-49e1-a3bf-ca597ba0a17d,post_peakaboo,usefulness,4,4,4,2026-08-05T16:50:44.126256+00:00
+222,c772eded-8c5b-49e1-a3bf-ca597ba0a17d,post_peakaboo,clarity,4,4,4,2026-08-05T16:50:44.133614+00:00
+223,c772eded-8c5b-49e1-a3bf-ca597ba0a17d,post_peakaboo,mental_effort,4,4,4,2026-08-05T16:50:44.135764+00:00
+224,c772eded-8c5b-49e1-a3bf-ca597ba0a17d,post_peakaboo,appropriate_reliance,5,5,5,2026-08-05T16:50:44.137989+00:00
+225,c772eded-8c5b-49e1-a3bf-ca597ba0a17d,post_peakaboo,completed,yes,yes,"""yes""",2026-08-05T16:50:44.140260+00:00
+226,c772eded-8c5b-49e1-a3bf-ca597ba0a17d,post_peakaboo_recommendation,usefulness,3,3,3,2026-08-05T16:50:44.142693+00:00
+227,c772eded-8c5b-49e1-a3bf-ca597ba0a17d,post_peakaboo_recommendation,clarity,3,3,3,2026-08-05T16:50:44.145282+00:00
+228,c772eded-8c5b-49e1-a3bf-ca597ba0a17d,post_peakaboo_recommendation,mental_effort,2,2,2,2026-08-05T16:50:44.148647+00:00
+229,c772eded-8c5b-49e1-a3bf-ca597ba0a17d,post_peakaboo_recommendation,appropriate_reliance,5,5,5,2026-08-05T16:50:44.151428+00:00
+230,c772eded-8c5b-49e1-a3bf-ca597ba0a17d,post_peakaboo_recommendation,completed,yes,yes,"""yes""",2026-08-05T16:50:44.154474+00:00
+231,c772eded-8c5b-49e1-a3bf-ca597ba0a17d,final,completed,yes,yes,"""yes""",2026-08-05T16:50:44.157816+00:00
+232,e3fa8340-b639-41be-b15b-71295642168d,background,role,analytical_scientist,Analytical scientist,"""Analytical scientist""",2026-08-05T16:50:44.178778+00:00
+233,e3fa8340-b639-41be-b15b-71295642168d,background,completed,yes,yes,"""yes""",2026-08-05T16:50:44.181152+00:00
+234,e3fa8340-b639-41be-b15b-71295642168d,current_practice,completed,yes,yes,"""yes""",2026-08-05T16:50:44.183713+00:00
+235,e3fa8340-b639-41be-b15b-71295642168d,comprehension,score,4,4/4,"{""score"": 4, ""total"": 4}",2026-08-05T16:50:44.187199+00:00
+236,e3fa8340-b639-41be-b15b-71295642168d,comprehension,completed,yes,yes,"""yes""",2026-08-05T16:50:44.191341+00:00
+237,e3fa8340-b639-41be-b15b-71295642168d,post_baseline,usefulness,3,3,3,2026-08-05T16:50:44.223757+00:00
+238,e3fa8340-b639-41be-b15b-71295642168d,post_baseline,clarity,2,2,2,2026-08-05T16:50:44.227403+00:00
+239,e3fa8340-b639-41be-b15b-71295642168d,post_baseline,mental_effort,5,5,5,2026-08-05T16:50:44.231801+00:00
+240,e3fa8340-b639-41be-b15b-71295642168d,post_baseline,appropriate_reliance,4,4,4,2026-08-05T16:50:44.247525+00:00
+241,e3fa8340-b639-41be-b15b-71295642168d,post_baseline,completed,yes,yes,"""yes""",2026-08-05T16:50:44.250124+00:00
+242,e3fa8340-b639-41be-b15b-71295642168d,post_peakaboo,usefulness,4,4,4,2026-08-05T16:50:44.253660+00:00
+243,e3fa8340-b639-41be-b15b-71295642168d,post_peakaboo,clarity,2,2,2,2026-08-05T16:50:44.256853+00:00
+244,e3fa8340-b639-41be-b15b-71295642168d,post_peakaboo,mental_effort,3,3,3,2026-08-05T16:50:44.260297+00:00
+245,e3fa8340-b639-41be-b15b-71295642168d,post_peakaboo,appropriate_reliance,4,4,4,2026-08-05T16:50:44.264407+00:00
+246,e3fa8340-b639-41be-b15b-71295642168d,post_peakaboo,completed,yes,yes,"""yes""",2026-08-05T16:50:44.267468+00:00
+247,e3fa8340-b639-41be-b15b-71295642168d,post_peakaboo_recommendation,usefulness,4,4,4,2026-08-05T16:50:44.270654+00:00
+248,e3fa8340-b639-41be-b15b-71295642168d,post_peakaboo_recommendation,clarity,2,2,2,2026-08-05T16:50:44.272873+00:00
+249,e3fa8340-b639-41be-b15b-71295642168d,post_peakaboo_recommendation,mental_effort,3,3,3,2026-08-05T16:50:44.275299+00:00
+250,e3fa8340-b639-41be-b15b-71295642168d,post_peakaboo_recommendation,appropriate_reliance,2,2,2,2026-08-05T16:50:44.277990+00:00
+251,e3fa8340-b639-41be-b15b-71295642168d,post_peakaboo_recommendation,completed,yes,yes,"""yes""",2026-08-05T16:50:44.280565+00:00
+252,e3fa8340-b639-41be-b15b-71295642168d,final,completed,yes,yes,"""yes""",2026-08-05T16:50:44.283004+00:00

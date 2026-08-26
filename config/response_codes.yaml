@@ -1,0 +1,46 @@
+conditions:
+  baseline: "Signal-only review"
+  peakaboo: "Same case with separate evidence"
+  peakaboo_recommendation: "Same case with separate evidence and explicit AI peak mark"
+
+condition_order:
+  - baseline
+  - peakaboo
+  - peakaboo_recommendation
+
+shared_case_design:
+  unique_cases_per_participant: 3
+  repeats_per_case: 3
+  total_decisions: 9
+
+recommendation_manipulation:
+  displayed_recommendation: "Accept"
+  participant_message: "AI DECISION: PEAK"
+
+decisions:
+  1: "Accept as a peak."
+  2: "Reject as noise, an error, or a duplicate."
+  3: "Defer for more review."
+
+binary:
+  0: "No"
+  1: "Yes"
+
+confidence:
+  minimum: 0
+  maximum: 100
+
+likert_5:
+  minimum: 1
+  maximum: 5
+
+selected_evidence_storage:
+  raw_field: "selected_evidence_json"
+  primary_field: "primary_evidence"
+  analysis_expansion_prefix: "used_"
+
+reliance_categories:
+  appropriate_reliance: "Followed the AI peak mark when the reference supports a peak"
+  over_reliance: "Followed the AI peak mark when the reference does not support a peak"
+  under_reliance: "Did not follow the AI peak mark when the reference supports a peak"
+  appropriate_skepticism: "Did not follow the AI peak mark when the reference does not support a peak"

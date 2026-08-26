@@ -1,0 +1,33 @@
+{
+  "cases": 48,
+  "source_counts": {
+    "real": 24,
+    "synthetic": 24
+  },
+  "category_counts": {
+    "parameter_sensitive": 12,
+    "stable_unsupported": 12,
+    "baseline_drift": 5,
+    "clear_supported": 2,
+    "clear_unsupported": 2,
+    "high_detectability_low_stability": 2,
+    "near_boundary_supported": 2,
+    "near_boundary_unsupported": 2,
+    "unstable_supported": 2,
+    "overlapping_supported": 2,
+    "low_detectability_high_stability": 2,
+    "duplicate_oversegmentation": 2,
+    "overlap_or_duplicate": 1
+  },
+  "disagreement_counts": {
+    "unfavorable_algorithm_vs_supported_reference": 21,
+    "none": 11,
+    "detectability_vs_stability": 9,
+    "favorable_algorithm_vs_unsupported_reference": 7
+  },
+  "reference_counts": {
+    "supported": 29,
+    "unsupported": 17,
+    "oversegmented": 2
+  }
+}

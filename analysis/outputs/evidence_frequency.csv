@@ -1,0 +1,9 @@
+evidence,count,rate
+how_clearly_it_stands_out,18,0.16666666666666666
+repeatability_after_signal_changes,18,0.16666666666666666
+peak_shape,15,0.1388888888888889
+ai_says_this_is_a_peak,15,0.1388888888888889
+repeatability_after_setting_changes,13,0.12037037037037036
+signal_strength,11,0.10185185185185185
+local_noise_or_baseline,10,0.09259259259259259
+overlap_or_duplicate_warning,8,0.07407407407407407

@@ -1,0 +1,13 @@
+session_id,participant_id,condition_order,case_bank_version,study_version,started_at,completed_at,current_phase,current_trial_position,status
+ef6afff9-99ca-4808-be2e-709bacf5b1bf,DEMO001,baseline>peakaboo>peakaboo_recommendation,demo-48-v3,3.0.0-demo,2026-08-05T16:50:43.060499+00:00,2026-08-05T16:50:43.170525+00:00,complete,1,complete
+e9459b53-bfb9-4fc4-b403-b8a39c922921,DEMO002,baseline>peakaboo>peakaboo_recommendation,demo-48-v3,3.0.0-demo,2026-08-05T16:50:43.172583+00:00,2026-08-05T16:50:43.279748+00:00,complete,1,complete
+80bacd2f-b280-46ae-9ddb-3fc2a5fec135,DEMO003,baseline>peakaboo>peakaboo_recommendation,demo-48-v3,3.0.0-demo,2026-08-05T16:50:43.282157+00:00,2026-08-05T16:50:43.375582+00:00,complete,1,complete
+503410c3-68e7-4660-9086-a79193b23af1,DEMO004,baseline>peakaboo>peakaboo_recommendation,demo-48-v3,3.0.0-demo,2026-08-05T16:50:43.378243+00:00,2026-08-05T16:50:43.476497+00:00,complete,1,complete
+13313f9a-3141-4d77-b28b-b8620f18e479,DEMO005,baseline>peakaboo>peakaboo_recommendation,demo-48-v3,3.0.0-demo,2026-08-05T16:50:43.478895+00:00,2026-08-05T16:50:43.571797+00:00,complete,1,complete
+a196a3dd-4f8c-4633-a102-6a695aa976df,DEMO006,baseline>peakaboo>peakaboo_recommendation,demo-48-v3,3.0.0-demo,2026-08-05T16:50:43.573889+00:00,2026-08-05T16:50:43.671015+00:00,complete,1,complete
+97a247ad-d7eb-4d30-94cc-83253931b41d,DEMO007,baseline>peakaboo>peakaboo_recommendation,demo-48-v3,3.0.0-demo,2026-08-05T16:50:43.673354+00:00,2026-08-05T16:50:43.771466+00:00,complete,1,complete
+c63f09f8-6992-4d72-93a1-95a81f0d8c2a,DEMO008,baseline>peakaboo>peakaboo_recommendation,demo-48-v3,3.0.0-demo,2026-08-05T16:50:43.774000+00:00,2026-08-05T16:50:43.860000+00:00,complete,1,complete
+2b53b17c-752c-4187-8d1c-f380458444c5,DEMO009,baseline>peakaboo>peakaboo_recommendation,demo-48-v3,3.0.0-demo,2026-08-05T16:50:43.862165+00:00,2026-08-05T16:50:43.956934+00:00,complete,1,complete
+c342fcda-a888-4af9-90ea-b9c69c0bb052,DEMO010,baseline>peakaboo>peakaboo_recommendation,demo-48-v3,3.0.0-demo,2026-08-05T16:50:43.959525+00:00,2026-08-05T16:50:44.051744+00:00,complete,1,complete
+c772eded-8c5b-49e1-a3bf-ca597ba0a17d,DEMO011,baseline>peakaboo>peakaboo_recommendation,demo-48-v3,3.0.0-demo,2026-08-05T16:50:44.054671+00:00,2026-08-05T16:50:44.159873+00:00,complete,1,complete
+e3fa8340-b639-41be-b15b-71295642168d,DEMO012,baseline>peakaboo>peakaboo_recommendation,demo-48-v3,3.0.0-demo,2026-08-05T16:50:44.162366+00:00,2026-08-05T16:50:44.285157+00:00,complete,1,complete

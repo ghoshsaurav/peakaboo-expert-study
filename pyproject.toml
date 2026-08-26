@@ -1,0 +1,10 @@
+[project]
+name = "peakaboo-expert-study"
+version = "3.0.0"
+description = "Expert-study platform for decomposed uncertainty evidence in AI-assisted candidate review"
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+addopts = "-q"

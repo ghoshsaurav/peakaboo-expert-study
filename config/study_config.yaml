@@ -1,0 +1,28 @@
+study:
+  title: "Expert Evaluation of Peak-a-boo"
+  study_version: "3.0.0"
+  case_bank_version: "demo-48-v3"
+  global_seed: 20260805
+  # Fixed flow and direct same-case comparison: 3 shared cases × 3 conditions.
+  trials_per_condition: 3
+  trials_per_participant: 9
+  explanation_trials: 2
+  same_cases_across_conditions: true
+  fixed_condition_order: true
+  recommendation_mode: "ai_explicitly_marks_peak"
+  enabled_conditions:
+    - baseline
+    - peakaboo
+    - peakaboo_recommendation
+
+paths:
+  case_bank: "data/demo/case_bank.csv"
+  signals: "data/demo/signals.npz"
+  database: "data/results/study_v3.db"
+
+researcher:
+  password: "saurav"
+
+analysis:
+  reference_interpretation: "comparison_evidence_not_chemical_ground_truth"
+  pilot_minimum_participants: 6

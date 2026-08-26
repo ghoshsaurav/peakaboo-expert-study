@@ -1,0 +1,20 @@
+                               GEE Regression Results                              
+===================================================================================
+Dep. Variable:         reference_alignment   No. Observations:                  108
+Model:                                 GEE   No. clusters:                       12
+Method:                        Generalized   Min. cluster size:                   9
+                      Estimating Equations   Max. cluster size:                   9
+Family:                           Binomial   Mean cluster size:                 9.0
+Dependence structure:         Exchangeable   Num. iterations:                     2
+Date:                     Wed, 05 Aug 2026   Scale:                           1.000
+Covariance type:                    robust   Time:                         16:50:45
+===========================================================================================================
+                                              coef    std err          z      P>|z|      [0.025      0.975]
+-----------------------------------------------------------------------------------------------------------
+Intercept                                   1.6094      0.529      3.042      0.002       0.572       2.647
+C(condition)[T.peakaboo]                   -0.5108      0.533     -0.958      0.338      -1.556       0.534
+C(condition)[T.peakaboo_recommendation]    -0.1881      0.736     -0.256      0.798      -1.630       1.254
+==============================================================================
+Skew:                         -1.4553   Kurtosis:                       0.1642
+Centered skew:                -1.2675   Centered kurtosis:              0.0891
+==============================================================================

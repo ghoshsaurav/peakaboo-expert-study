@@ -1,0 +1,38 @@
+local_variation_band:
+  label: "Local variation band"
+  definition: "A visual summary of local residual variation around the smoothed signal."
+  caution: "It is not a formal confidence interval and does not contain the true signal with a stated probability."
+
+detectability:
+  label: "Detectability"
+  formula: "prominence / (local_noise + epsilon)"
+  definition: "How strongly the candidate stands out compared with local noise."
+  caution: "A high value does not prove that a chemical compound is present."
+
+weber_margin:
+  label: "Boundary margin"
+  formula: "detectability - calibrated_boundary"
+  definition: "How far the candidate lies above or below the configured detector cutoff."
+  caution: "A value near zero is borderline. The cutoff is specific to the dataset and pipeline."
+
+perturbation_stability:
+  label: "Perturbation stability"
+  formula: "recovered_runs / total_runs"
+  definition: "How often the detector finds the candidate again after small plausible signal changes."
+  caution: "Repeatability is not chemical correctness."
+
+parameter_robustness:
+  label: "Parameter robustness"
+  formula: "recovered_parameter_settings / tested_parameter_settings"
+  definition: "How often the candidate remains detected after small changes to reasonable processing settings."
+  caution: "The result depends on the tested parameter range."
+
+structural_ambiguity:
+  label: "Structural ambiguity"
+  definition: "Possible overlap, shoulder behavior, duplicate detection, baseline drift, or segment-boundary effects."
+  caution: "These indicators are review evidence, not a full deconvolution result."
+
+reference_correspondence:
+  label: "Reference correspondence"
+  definition: "Whether the candidate corresponds to a comparison interval and whether it is the strongest candidate in that interval."
+  caution: "Reference intervals are comparison evidence, not perfect chemical ground truth."

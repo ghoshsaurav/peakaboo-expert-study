@@ -1,0 +1,46 @@
+field,table,type,description,values_or_units
+participant_id,sessions,text,Researcher-assigned participant identifier,Do not use participant name
+session_id,all,text,Random ID for one study session,UUID
+condition_order,sessions,text,Fixed view order,baseline>peakaboo>peakaboo_recommendation
+trial_id,assignments/trial_responses,text,Participant-specific decision identifier,participant-position
+case_id,assignments/trial_responses,text,Case-bank candidate identifier,REAL-### or SYN-###
+case_slot,assignments,integer,Shared case position repeated across all conditions,1;2;3
+condition,assignments/trial_responses,categorical,Study view,baseline;peakaboo;peakaboo_recommendation
+block_number,assignments,integer,Fixed condition block,1;2;3
+trial_position,assignments,integer,Decision order,1–9
+displayed_recommendation,assignments,categorical,Participant-facing AI advice in the final condition,Accept or blank
+decision_code,trial_responses,integer,Machine-readable decision,1 accept;2 reject;3 defer
+decision_label,trial_responses,text,Displayed decision label,
+confidence,trial_responses,integer,How sure the participant is,0–100
+selected_evidence_json,trial_responses,JSON array,Most influential clue stored as one-item array,Structured option
+primary_evidence,trial_responses,text,Most influential clue,Structured option
+clarity,trial_responses,integer,Clarity on selected explanation trials,1–5
+evidence_disagreement,trial_responses,categorical,Whether clues appeared to conflict,Yes;No;Unsure
+recommendation,trial_responses,categorical,AI advice shown in the final condition,Accept
+recommendation_followed,trial_responses,binary,Whether the response matched the AI peak mark,0;1
+response_time_seconds,trial_responses,real,Elapsed decision time,seconds
+opened_sections_json,trial_responses,JSON array,Optional detail panels opened,stability_details;parameter_details;provenance
+hidden_reference_status,assignments,categorical,Comparison label hidden until study completion,supported;unsupported;oversegmented
+hidden_case_category,assignments,categorical,Researcher-coded case type,See case bank
+hidden_disagreement_type,assignments,categorical,Researcher-coded evidence conflict,See case bank
+detectability,assignments,real,Prominence divided by nearby residual noise,ratio
+weber_margin,assignments,real,Detectability minus detector cutoff,ratio difference
+stability,assignments,real,Fraction of small-signal-change tests that recover the candidate,0–1
+parameter_robustness,assignments,real,Fraction of nearby setting combinations that recover the candidate,0–1
+overlap_flag,assignments,binary,Possible overlap indicator,0;1
+duplicate_risk,assignments,categorical,Rule-based duplicate warning,Low;Moderate;High
+reference_expected_decision,derived,integer,Decision implied by comparison label,1 accept;2 reject
+reference_alignment,derived,binary,Decision agrees with comparison label,Not chemical correctness
+confidence_probability,derived,real,Confidence divided by 100,0–1
+calibration_error,derived,real,Absolute difference between confidence and reference alignment,0–1
+case_has_evidence_conflict,derived,binary,Hidden metadata indicates conflicting evidence,0;1
+appropriate_defer,derived,binary,Participant deferred on a conflict case,0;1
+unsupported_accept,derived,binary,Accepted a reference-unsupported candidate,0;1
+supported_reject,derived,binary,Rejected a reference-supported candidate,0;1
+recommendation_reference_aligned,derived,binary,AI peak mark agrees with comparison label,0;1
+recommendation_followed_derived,derived,binary,Decision matches AI peak mark,0;1
+reliance_category,derived,categorical,Four-cell reliance category,appropriate_reliance;over_reliance;under_reliance;appropriate_skepticism
+changed_after_evidence,same_case_decision_changes,binary,Decision changed from signal only to separate evidence,0;1
+changed_after_ai_peak_mark,same_case_decision_changes,binary,Decision changed after explicit AI peak mark,0;1
+changed_from_baseline_to_ai,same_case_decision_changes,binary,Decision differs between first and final view,0;1
+used_*,derived,binary,One-hot expansion of selected clue,0;1

@@ -1,0 +1,15 @@
+{
+  "database": "data/demo/demo_study.db",
+  "participants": 12,
+  "completed_decisions": 108,
+  "decisions_per_participant": 9,
+  "decisions_per_condition": 3,
+  "unique_cases_per_participant": 3,
+  "same_cases_repeated_across_conditions": true,
+  "fixed_condition_order": [
+    "baseline",
+    "peakaboo",
+    "peakaboo_recommendation"
+  ],
+  "interpretation_note": "Reference correspondence is comparison evidence, not chemical correctness."
+}

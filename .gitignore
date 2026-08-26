@@ -1,0 +1,18 @@
+# Study response data
+data/results/*
+!data/results/.gitkeep
+*.db
+
+# Secrets
+.streamlit/secrets.toml
+.env
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
