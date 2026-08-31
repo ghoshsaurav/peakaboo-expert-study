@@ -1,3 +1,5 @@
+"""Shared study data structures and participant-safety helpers."""
+
 from __future__ import annotations
 
 from dataclasses import dataclass
@@ -21,6 +23,8 @@ HIDDEN_CASE_FIELDS = {
 
 @dataclass
 class SignalBundle:
+    """Store the signal window and precomputed evidence arrays for one study case."""
+
     time: np.ndarray
     raw: np.ndarray
     smooth: np.ndarray
@@ -37,5 +41,5 @@ class SignalBundle:
 
 
 def participant_case(case: dict[str, Any]) -> dict[str, Any]:
-    """Return a participant-safe copy of a case record."""
+    """Return a participant-safe copy of a case record with hidden comparison fields removed."""
     return {key: value for key, value in case.items() if key not in HIDDEN_CASE_FIELDS}
