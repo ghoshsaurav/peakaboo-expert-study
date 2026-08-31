@@ -2,24 +2,49 @@ field,table,type,description,values_or_units
 participant_id,sessions,text,Researcher-assigned participant identifier,Do not use participant name
 session_id,all,text,Random ID for one study session,UUID
 condition_order,sessions,text,Fixed view order,baseline>peakaboo>peakaboo_recommendation
+case_bank_version,sessions,text,Case-bank version used for the session,Version string
+study_version,sessions,text,Study software/protocol version,Version string
+started_at,sessions,timestamp,UTC session start time,ISO 8601
+completed_at,sessions,timestamp,UTC session completion time,ISO 8601 or blank
+current_phase,sessions,text,Last recorded study phase,background/current_practice/tutorial/trials/final/complete
+current_trial_position,sessions,integer,Next or current decision position,1–10
+status,sessions,categorical,Session completion state,active;complete
 trial_id,assignments/trial_responses,text,Participant-specific decision identifier,participant-position
 case_id,assignments/trial_responses,text,Case-bank candidate identifier,REAL-### or SYN-###
+pair_id,assignments,text,Matched case-bank pair identifier,Pair code
 case_slot,assignments,integer,Shared case position repeated across all conditions,1;2;3
 condition,assignments/trial_responses,categorical,Study view,baseline;peakaboo;peakaboo_recommendation
 block_number,assignments,integer,Fixed condition block,1;2;3
 trial_position,assignments,integer,Decision order,1–9
+source_type,assignments,categorical,Origin of candidate case,real;synthetic
 displayed_recommendation,assignments,categorical,Participant-facing AI advice in the final condition,Accept or blank
+assignment_json,assignments,JSON,Full immutable assignment payload for the trial,Structured case metadata
 decision_code,trial_responses,integer,Machine-readable decision,1 accept;2 reject;3 defer
-decision_label,trial_responses,text,Displayed decision label,
+decision_label,trial_responses,text,Displayed decision label,Accept/Reject/Defer wording
 confidence,trial_responses,integer,How sure the participant is,0–100
-selected_evidence_json,trial_responses,JSON array,Most influential clue stored as one-item array,Structured option
-primary_evidence,trial_responses,text,Most influential clue,Structured option
-clarity,trial_responses,integer,Clarity on selected explanation trials,1–5
-evidence_disagreement,trial_responses,categorical,Whether clues appeared to conflict,Yes;No;Unsure
-recommendation,trial_responses,categorical,AI advice shown in the final condition,Accept
-recommendation_followed,trial_responses,binary,Whether the response matched the AI peak mark,0;1
+selected_evidence_json,trial_responses,JSON array,Selected evidence stored as a structured array,Structured option labels
+primary_evidence,trial_responses,text,Single most influential clue,Structured option
+optional_explanation,trial_responses,text,Optional participant explanation,Free text or blank
+explanation_reason_json,trial_responses,JSON array,Structured explanation-check reason,One or more coded reasons
+clarity,trial_responses,integer,Clarity rating on selected explanation trials,1–5 or blank
+difficulty,trial_responses,integer,Optional decision-difficulty rating,1–5 or blank
+evidence_disagreement,trial_responses,categorical,Whether clues appeared to conflict,Yes;No;Unsure or blank
+disagreement_sources_json,trial_responses,JSON array,Participant-selected source of evidence conflict,Structured option or blank
+recommendation,trial_responses,categorical,AI advice shown in the final condition,Accept or blank
+recommendation_followed,trial_responses,binary,Whether the response matched the displayed AI advice,0;1 or blank
 response_time_seconds,trial_responses,real,Elapsed decision time,seconds
 opened_sections_json,trial_responses,JSON array,Optional detail panels opened,stability_details;parameter_details;provenance
+interaction_json,trial_responses,JSON,Per-trial interaction-state summary,Structured object
+submitted_at,trial_responses,timestamp,UTC trial submission time,ISO 8601
+section,survey_responses,text,Questionnaire section identifier,background/current_practice/comprehension/post_*/final
+question_code,survey_responses,text,Stable machine-readable questionnaire item code,See src/questionnaires.py
+response_code,survey_responses,text,Machine-readable response value,Coded string
+response_label,survey_responses,text,Displayed response value,Human-readable label
+response_json,survey_responses,JSON,Structured questionnaire response,Scalar/list/object
+created_at,survey_responses,timestamp,UTC questionnaire response save time,ISO 8601
+event_type,interaction_events,text,Logged interaction-event type,trial_opened/trial_submitted/etc.
+event_value,interaction_events,JSON,Structured event payload,JSON text
+event_time,interaction_events,timestamp,UTC interaction-event time,ISO 8601
 hidden_reference_status,assignments,categorical,Comparison label hidden until study completion,supported;unsupported;oversegmented
 hidden_case_category,assignments,categorical,Researcher-coded case type,See case bank
 hidden_disagreement_type,assignments,categorical,Researcher-coded evidence conflict,See case bank
@@ -29,16 +54,22 @@ stability,assignments,real,Fraction of small-signal-change tests that recover th
 parameter_robustness,assignments,real,Fraction of nearby setting combinations that recover the candidate,0–1
 overlap_flag,assignments,binary,Possible overlap indicator,0;1
 duplicate_risk,assignments,categorical,Rule-based duplicate warning,Low;Moderate;High
+reference_supported,derived,binary,Case carries a reference-supported comparison label,0;1
+reference_unsupported,derived,binary,Case carries an unsupported/oversegmented/duplicate comparison label,0;1
 reference_expected_decision,derived,integer,Decision implied by comparison label,1 accept;2 reject
+supported_accept,derived,binary,Accepted a reference-supported candidate,0;1
+unsupported_reject,derived,binary,Rejected a reference-unsupported candidate,0;1
+unsupported_accept,derived,binary,Accepted a reference-unsupported candidate,0;1
+supported_reject,derived,binary,Rejected a reference-supported candidate,0;1
 reference_alignment,derived,binary,Decision agrees with comparison label,Not chemical correctness
+reference_agreement,derived,binary,Backward-compatible alias for reference_alignment,0;1
 confidence_probability,derived,real,Confidence divided by 100,0–1
 calibration_error,derived,real,Absolute difference between confidence and reference alignment,0–1
 case_has_evidence_conflict,derived,binary,Hidden metadata indicates conflicting evidence,0;1
 appropriate_defer,derived,binary,Participant deferred on a conflict case,0;1
-unsupported_accept,derived,binary,Accepted a reference-unsupported candidate,0;1
-supported_reject,derived,binary,Rejected a reference-supported candidate,0;1
-recommendation_reference_aligned,derived,binary,AI peak mark agrees with comparison label,0;1
-recommendation_followed_derived,derived,binary,Decision matches AI peak mark,0;1
+recommendation_code,derived,integer,Machine code for displayed recommendation,1 accept;2 reject;3 defer
+recommendation_reference_aligned,derived,binary,AI recommendation agrees with comparison label,0;1
+recommendation_followed_derived,derived,binary,Decision matches AI recommendation,0;1
 reliance_category,derived,categorical,Four-cell reliance category,appropriate_reliance;over_reliance;under_reliance;appropriate_skepticism
 changed_after_evidence,same_case_decision_changes,binary,Decision changed from signal only to separate evidence,0;1
 changed_after_ai_peak_mark,same_case_decision_changes,binary,Decision changed after explicit AI peak mark,0;1
