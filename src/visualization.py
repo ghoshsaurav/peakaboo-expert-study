@@ -1,3 +1,5 @@
+"""Plotly figures used in participant and researcher study views."""
+
 from __future__ import annotations
 
 from typing import Any
@@ -14,6 +16,7 @@ def chromatogram_figure(
     title: str = "Candidate review",
     show_nearby_maxima: bool = True,
 ) -> go.Figure:
+    """Plot one case signal, the marked candidate, and optional local evidence layers."""
     figure = go.Figure()
     if show_variation_band:
         figure.add_trace(
@@ -70,6 +73,7 @@ def chromatogram_figure(
 
 
 def detectability_figure(score: float, boundary: float) -> go.Figure:
+    """Show candidate detectability relative to the configured decision boundary."""
     maximum = max(boundary * 2.0, score * 1.25, 1.0)
     figure = go.Figure()
     figure.add_trace(
@@ -93,6 +97,7 @@ def detectability_figure(score: float, boundary: float) -> go.Figure:
 
 
 def stability_figure(hits: np.ndarray) -> go.Figure:
+    """Show whether the candidate was recovered in each perturbation run."""
     hits = np.asarray(hits, dtype=int)
     if len(hits) == 0:
         hits = np.array([0])
@@ -117,6 +122,7 @@ def stability_figure(hits: np.ndarray) -> go.Figure:
 
 
 def parameter_robustness_figure(matrix: np.ndarray, smoothing: np.ndarray, k_values: np.ndarray) -> go.Figure:
+    """Show candidate recovery across the smoothing-by-threshold parameter grid."""
     matrix = np.asarray(matrix, dtype=int)
     figure = go.Figure(
         data=go.Heatmap(
@@ -139,6 +145,7 @@ def parameter_robustness_figure(matrix: np.ndarray, smoothing: np.ndarray, k_val
 
 
 def evidence_summary_figure(case: dict[str, Any]) -> go.Figure:
+    """Summarize four evidence dimensions on a common normalized display scale."""
     labels = ["Detectability", "Stability", "Parameter robustness", "Structural clarity"]
     boundary = float(case.get("weber_boundary", 15.96))
     score = float(case.get("detectability", 0.0))
