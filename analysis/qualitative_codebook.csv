@@ -4,8 +4,8 @@ evidence_used,Specific evidence the analyst reports using,Shape noise prominence
 deferral_trigger,Conditions that cause additional review or consultation,Weak signal conflict overlap baseline risk,Simple rejection without a deferral rationale,RQ1;RQ2
 uncertainty_interpretation,Meaning assigned to uncertainty evidence,Correct or incorrect interpretations of detectability stability robustness,General dislike without interpretation,RQ3
 confusion,Reported difficulty or misunderstanding,Unclear values conflicting labels cognitive overload,Simple disagreement with algorithm when evidence was understood,RQ3
-evidence_conflict,Analyst notices two evidence sources supporting different conclusions,Detectability-stability or signal-score disagreement,Single weak evidence source,RQ3;RQ4
-over_reliance,Algorithmic evidence or recommendation overrides analyst judgment inappropriately,Following favorable algorithmic output despite contrary comparison evidence,Appropriate use of evidence or justified deferral,RQ4
-under_reliance,Analyst dismisses useful evidence or rejects supported cases because of unfavorable algorithmic information,Unsupported rejection based solely on low score,Independent correct rejection,RQ4
+evidence_conflict,Analyst notices two evidence sources supporting different conclusions,Detectability-stability signal-score or recommendation-judgment disagreement,Single weak evidence source,RQ3;RQ4
+over_reliance,Algorithmic evidence or recommendation overrides analyst judgment despite contrary comparison evidence,Following favorable algorithmic output when the study comparison evidence points the other way,Appropriate reliance justified by evidence or a reasoned deferral,RQ4
+under_reliance,Analyst dismisses useful algorithmic evidence or rejects a reference-supported case because of unfavorable algorithmic information,Reference-supported rejection based mainly on an unfavorable score or recommendation,Independent rejection supported by other evidence,RQ4
 workflow_fit,How the system would or would not integrate into routine work,Audit review queue documentation timing,Abstract opinions without workflow implications,Design evidence
-requested_change,Requested interface or evidence modification,Add remove relabel reorganize evidence,General praise,Design evidence
+requested_change,Requested interface or evidence modification,Add remove relabel or reorganize evidence,General praise,Design evidence
