@@ -1,3 +1,5 @@
+"""Load study settings and resolve repository-relative paths."""
+
 from __future__ import annotations
 
 from dataclasses import dataclass
@@ -9,6 +11,8 @@ import yaml
 
 @dataclass(frozen=True)
 class Paths:
+    """Resolved file locations used by the study application."""
+
     root: Path
     config: Path
     case_bank: Path
@@ -17,10 +21,12 @@ class Paths:
 
 
 def project_root() -> Path:
+    """Return the repository root based on the location of this source file."""
     return Path(__file__).resolve().parents[1]
 
 
 def load_config(path: str | Path | None = None) -> dict[str, Any]:
+    """Load the YAML study configuration and record the file that supplied it."""
     cfg_path = Path(path) if path else project_root() / "config" / "study_config.yaml"
     if not cfg_path.exists():
         raise FileNotFoundError(f"Study configuration not found: {cfg_path}")
@@ -31,11 +37,13 @@ def load_config(path: str | Path | None = None) -> dict[str, Any]:
 
 
 def resolve_paths(config: dict[str, Any] | None = None) -> Paths:
+    """Resolve case-bank, signal, and local-database paths from study configuration."""
     config = config or load_config()
     root = project_root()
     paths_cfg = config.get("paths", {})
 
     def resolve(value: str, fallback: str) -> Path:
+        """Resolve one configured path relative to the repository root."""
         raw = Path(value or fallback)
         return raw if raw.is_absolute() else root / raw
 
