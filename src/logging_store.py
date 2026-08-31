@@ -1,3 +1,11 @@
+"""Store study sessions, assignments, responses, progress, and interaction events.
+
+The storage layer supports either a local SQLite database or a PostgreSQL
+connection supplied through ``DATABASE_URL``. All writes use SQLAlchemy
+transactions so the participant and researcher views share one consistent data
+model.
+"""
+
 from __future__ import annotations
 
 import json
@@ -13,11 +21,15 @@ from sqlalchemy.engine import Connection, Engine
 
 
 def utc_now() -> str:
+    """Return the current UTC time as an ISO-formatted string for study records."""
     return datetime.now(timezone.utc).isoformat()
 
 
 class StudyStore:
+    """Database interface for all persistent expert-study state and responses."""
+
     def __init__(self, database: str | Path):
+        """Open a PostgreSQL/SQLite database and create the required study tables."""
         raw_database = str(database)
 
         if raw_database.startswith("postgresql://"):
@@ -61,10 +73,12 @@ class StudyStore:
 
     @contextmanager
     def connection(self) -> Iterator[Connection]:
+        """Yield a transaction-scoped database connection that commits on success."""
         with self.engine.begin() as connection:
             yield connection
 
     def initialize(self) -> None:
+        """Create the study schema and apply the small backward-compatible migration."""
         if self.is_postgres:
             id_column = "BIGSERIAL PRIMARY KEY"
             response_time_type = "DOUBLE PRECISION"
@@ -192,6 +206,7 @@ class StudyStore:
         case_bank_version: str,
         study_version: str,
     ) -> str:
+        """Resume the latest active session for a participant or create a new one."""
         participant_id = participant_id.strip()
 
         if not participant_id:
@@ -262,6 +277,7 @@ class StudyStore:
         session_id: str,
         assignment: pd.DataFrame,
     ) -> None:
+        """Persist a participant's deterministic case assignment without duplicating trials."""
         with self.connection() as connection:
             for _, row in assignment.iterrows():
                 payload = row.to_dict()
@@ -354,6 +370,7 @@ class StudyStore:
         self,
         session_id: str,
     ) -> pd.DataFrame:
+        """Load the ordered assignment records for a participant session."""
         with self.connection() as connection:
             frame = pd.read_sql_query(
                 text(
@@ -390,6 +407,7 @@ class StudyStore:
         response_label: Any,
         response: Any = None,
     ) -> None:
+        """Insert or replace one structured questionnaire response for a session."""
         with self.connection() as connection:
             connection.execute(
                 text(
@@ -459,6 +477,7 @@ class StudyStore:
         self,
         payload: dict[str, Any],
     ) -> None:
+        """Validate and upsert one participant decision with its evidence and interaction fields."""
         required = {
             "session_id",
             "trial_id",
@@ -670,6 +689,7 @@ class StudyStore:
         self,
         session_id: str,
     ) -> set[str]:
+        """Return the trial IDs already submitted for a participant session."""
         with self.connection() as connection:
             rows = connection.execute(
                 text(
@@ -695,6 +715,7 @@ class StudyStore:
         phase: str,
         trial_position: int | None = None,
     ) -> None:
+        """Update the participant's current study phase and optional trial position."""
         with self.connection() as connection:
             if trial_position is None:
                 connection.execute(
@@ -736,6 +757,7 @@ class StudyStore:
         self,
         session_id: str,
     ) -> None:
+        """Mark a participant session complete and record its completion time."""
         with self.connection() as connection:
             connection.execute(
                 text(
@@ -762,6 +784,7 @@ class StudyStore:
         event_value: Any = None,
         trial_id: str | None = None,
     ) -> None:
+        """Append a timestamped participant interaction event for optional behavior analysis."""
         with self.connection() as connection:
             connection.execute(
                 text(
@@ -801,6 +824,7 @@ class StudyStore:
         self,
         name: str,
     ) -> pd.DataFrame:
+        """Read one allow-listed study table into a pandas DataFrame."""
         allowed = {
             "sessions",
             "assignments",
@@ -829,6 +853,7 @@ class StudyStore:
         tuple[str, str],
         dict[str, Any],
     ]:
+        """Return questionnaire responses keyed by ``(section, question_code)``."""
         with self.connection() as connection:
             rows = connection.execute(
                 text(
@@ -867,6 +892,7 @@ class StudyStore:
         self,
         session_id: str,
     ) -> dict[str, Any] | None:
+        """Return one session row as a dictionary, or ``None`` if it does not exist."""
         with self.connection() as connection:
             row = connection.execute(
                 text(
