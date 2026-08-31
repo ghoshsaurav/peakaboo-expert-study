@@ -1,3 +1,5 @@
+"""Central definitions for study wording, response choices, help text, and practice items."""
+
 from __future__ import annotations
 
 from typing import Any
@@ -223,6 +225,7 @@ FINAL_CONDITION_LABELS = {
 
 
 def machine_code(label: str) -> str:
+    """Convert a human-readable response label into a stable machine-friendly code."""
     return (
         label.strip()
         .lower()
