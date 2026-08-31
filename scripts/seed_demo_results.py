@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+"""Create a local demonstration database with simulated study responses.
+
+The generated records are for software testing and figure development only; they
+are not human-subject study findings.
+"""
+
 from __future__ import annotations
 
 import argparse
@@ -17,6 +23,7 @@ from src.logging_store import StudyStore  # noqa: E402
 
 
 def main() -> None:
+    """Reset the demo database and populate it with deterministic simulated participants."""
     parser = argparse.ArgumentParser(description="Create a demonstration database with simulated responses.")
     parser.add_argument("--database", type=Path, default=ROOT / "data" / "demo" / "demo_study.db")
     parser.add_argument("--case-bank", type=Path, default=ROOT / "data" / "demo" / "case_bank.csv")
