@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+"""Copy the bundled demonstration database into the active local results path."""
+
 from __future__ import annotations
 
 import argparse
@@ -9,6 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def main() -> None:
+    """Require explicit confirmation, create the target folder, and copy the demo database."""
     parser = argparse.ArgumentParser(description="Copy the bundled demonstration database into the active results path.")
     parser.add_argument("--source", type=Path, default=ROOT / "data" / "demo" / "demo_study.db")
     parser.add_argument("--target", type=Path, default=ROOT / "data" / "results" / "study_v3.db")
