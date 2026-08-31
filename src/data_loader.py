@@ -1,3 +1,5 @@
+"""Load and validate the study case bank, signal archive, and case metadata."""
+
 from __future__ import annotations
 
 import json
@@ -13,6 +15,7 @@ from .models import SignalBundle
 
 @lru_cache(maxsize=8)
 def load_case_bank(path: str | Path) -> pd.DataFrame:
+    """Load the case-bank CSV and verify the fields required by assignment and study views."""
     path = Path(path)
     if not path.exists():
         raise FileNotFoundError(f"Case bank not found: {path}")
@@ -36,6 +39,7 @@ def load_case_bank(path: str | Path) -> pd.DataFrame:
 
 @lru_cache(maxsize=4)
 def _load_npz(path: str | Path) -> dict[str, np.ndarray]:
+    """Load the self-contained signal archive once and cache its arrays."""
     path = Path(path)
     if not path.exists():
         raise FileNotFoundError(f"Signal archive not found: {path}")
@@ -44,9 +48,11 @@ def _load_npz(path: str | Path) -> dict[str, np.ndarray]:
 
 
 def load_signal_bundle(path: str | Path, signal_key: str) -> SignalBundle:
+    """Load all signal and evidence arrays associated with one study case."""
     arrays = _load_npz(path)
 
     def get(name: str, default: np.ndarray | None = None) -> np.ndarray:
+        """Read one case-specific array or return an explicit default."""
         key = f"{signal_key}__{name}"
         if key in arrays:
             return arrays[key]
@@ -74,6 +80,7 @@ def load_signal_bundle(path: str | Path, signal_key: str) -> SignalBundle:
 
 
 def parse_provenance(value: Any) -> dict[str, Any]:
+    """Convert stored provenance JSON into a dictionary without failing on legacy text."""
     if isinstance(value, dict):
         return value
     if value is None or (isinstance(value, float) and np.isnan(value)):
@@ -85,6 +92,7 @@ def parse_provenance(value: Any) -> dict[str, Any]:
 
 
 def case_record(frame: pd.DataFrame, case_id: str) -> dict[str, Any]:
+    """Return one case-bank record by its stable case ID."""
     rows = frame.loc[frame["case_id"].astype(str) == str(case_id)]
     if rows.empty:
         raise KeyError(f"Unknown case_id: {case_id}")
