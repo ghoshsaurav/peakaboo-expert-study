@@ -1,3 +1,5 @@
+"""Researcher-only dashboard for study monitoring, analysis, case review, and exports."""
+
 from __future__ import annotations
 
 import os
@@ -24,10 +26,12 @@ from .visualization import chromatogram_figure, detectability_figure, parameter_
 
 
 def _csv_bytes(frame: pd.DataFrame) -> bytes:
+    """Serialize a DataFrame for a Streamlit CSV download button."""
     return frame.to_csv(index=False).encode("utf-8")
 
 
 def _authenticate(config: dict[str, Any]) -> bool:
+    """Require the configured researcher password before showing hidden study information."""
     expected = os.getenv("PEAKABOO_RESEARCHER_PASSWORD", str(config.get("researcher", {}).get("password", "change-me")))
     if st.session_state.get("researcher_authenticated"):
         return True
@@ -44,6 +48,7 @@ def _authenticate(config: dict[str, Any]) -> bool:
 
 
 def _load_results(store: StudyStore) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+    """Load stored study tables and build the analysis-ready trial table."""
     sessions = store.table("sessions")
     assignments = store.table("assignments")
     responses = store.table("trial_responses")
@@ -53,6 +58,7 @@ def _load_results(store: StudyStore) -> tuple[pd.DataFrame, pd.DataFrame, pd.Dat
 
 
 def render_overview(store: StudyStore) -> None:
+    """Render high-level study progress, participation, alignment, and calibration summaries."""
     sessions, _, _, trials = _load_results(store)
     summary = descriptive_summary(trials)
     columns = st.columns(6)
@@ -83,6 +89,7 @@ def render_overview(store: StudyStore) -> None:
 
 
 def _apply_filters(trials: pd.DataFrame) -> pd.DataFrame:
+    """Apply researcher-selected condition, source, category, and conflict filters."""
     st.subheader("Filters")
     filters = st.columns(4)
     conditions = sorted(trials["condition"].dropna().astype(str).unique())
@@ -112,6 +119,7 @@ def _apply_filters(trials: pd.DataFrame) -> pd.DataFrame:
 
 
 def render_results(store: StudyStore) -> None:
+    """Render RQ-aligned decision, evidence-conflict, reliance, and questionnaire summaries."""
     _, surveys, _, trials = _load_results(store)
     if trials.empty or trials["decision_code"].notna().sum() == 0:
         st.info("No completed trial responses are available.")
@@ -265,6 +273,7 @@ def render_results(store: StudyStore) -> None:
 
 
 def render_case_bank(bank: pd.DataFrame, paths: Paths) -> None:
+    """Render researcher-only case filters, hidden metadata, evidence previews, and edits."""
     st.subheader("Case bank")
     st.caption("Hidden comparison labels and case categories are visible only in researcher mode.")
     filter_columns = st.columns(4)
@@ -355,6 +364,7 @@ def render_case_bank(bank: pd.DataFrame, paths: Paths) -> None:
 
 
 def render_exports(store: StudyStore, paths: Paths) -> None:
+    """Offer CSV/database downloads needed for researcher analysis and backup."""
     st.subheader("Data exports")
     sessions, surveys, responses, trials = _load_results(store)
     assignments = store.table("assignments")
@@ -373,6 +383,7 @@ def render_exports(store: StudyStore, paths: Paths) -> None:
 
 
 def render_researcher_mode(config: dict[str, Any], paths: Paths, bank: pd.DataFrame, store: StudyStore) -> None:
+    """Authenticate the researcher and render status, results, case-bank, and export tabs."""
     if not _authenticate(config):
         return
     st.title("Peak-a-boo researcher dashboard")
