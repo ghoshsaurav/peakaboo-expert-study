@@ -1,0 +1,33 @@
+name: Test and validate
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run unit tests
+        run: pytest -q
+
+      - name: Validate case bank
+        run: python scripts/validate_case_bank.py
+
+      - name: Compile Python sources
+        run: python -m compileall -q src analysis scripts tests app.py
