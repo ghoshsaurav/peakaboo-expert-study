@@ -1,3 +1,5 @@
+"""Compute the signal-derived evidence used to build and display study cases."""
+
 from __future__ import annotations
 
 import json
@@ -14,6 +16,8 @@ EPSILON = 1e-12
 
 @dataclass(frozen=True)
 class DetectorConfig:
+    """Store the signal-processing settings used during case/evidence construction."""
+
     smooth_window: int = 2
     noise_window: int = 51
     distance: int = 22
@@ -27,6 +31,7 @@ class DetectorConfig:
 
 
 def moving_average(values: np.ndarray, window: int) -> np.ndarray:
+    """Smooth a signal with a simple moving average."""
     values = np.asarray(values, dtype=float)
     if window <= 1:
         return values.copy()
@@ -35,6 +40,7 @@ def moving_average(values: np.ndarray, window: int) -> np.ndarray:
 
 
 def rolling_std(values: np.ndarray, window: int) -> np.ndarray:
+    """Estimate centered local standard deviation and fill edge/missing values."""
     values = np.asarray(values, dtype=float)
     min_periods = max(3, int(window) // 4)
     series = pd.Series(values)
@@ -49,6 +55,7 @@ def rolling_std(values: np.ndarray, window: int) -> np.ndarray:
 
 
 def preprocess_signal(values: np.ndarray, smooth_window: int, noise_window: int) -> dict[str, np.ndarray]:
+    """Return raw, smoothed, residual, local-noise, and uncertainty-band arrays."""
     raw = np.asarray(values, dtype=float)
     smooth = moving_average(raw, smooth_window)
     residual = raw - smooth
@@ -73,6 +80,7 @@ def detect_candidates(
     prominence_floor: float = 0.00018,
     local_k: float | None = None,
 ) -> tuple[np.ndarray, dict[str, np.ndarray], dict[str, np.ndarray]]:
+    """Detect candidate peaks and optionally require prominence scaled by local noise."""
     processed = preprocess_signal(values, smooth_window, noise_window)
     peaks, props = find_peaks(
         processed["smooth"],
@@ -94,6 +102,7 @@ def detect_candidates(
 
 
 def prominence_at_candidate(smooth: np.ndarray, candidate_index: int) -> tuple[float, float]:
+    """Measure prominence and width near a nominated candidate sample."""
     candidate_index = int(np.clip(candidate_index, 1, len(smooth) - 2))
     # Peak prominence requires a local maximum. Search a small local neighborhood if needed.
     local = np.arange(max(1, candidate_index - 3), min(len(smooth) - 1, candidate_index + 4))
@@ -104,14 +113,17 @@ def prominence_at_candidate(smooth: np.ndarray, candidate_index: int) -> tuple[f
 
 
 def detectability(prominence: float, local_noise: float) -> float:
+    """Return prominence divided by local noise for one candidate."""
     return float(prominence) / (float(local_noise) + EPSILON)
 
 
 def weber_margin(score: float, boundary: float) -> float:
+    """Return the signed distance between detectability and the configured boundary."""
     return float(score) - float(boundary)
 
 
 def classify_detectability(score: float, boundary: float, near: float = 3.0) -> str:
+    """Convert detectability distance into above, near, or below-boundary wording."""
     margin = score - boundary
     if margin > near:
         return "Above boundary"
@@ -127,6 +139,13 @@ def perturbation_stability(
     config: DetectorConfig,
     seed: int,
 ) -> tuple[float, np.ndarray, np.ndarray]:
+    """Estimate candidate repeatability across noise-scaled perturbation reruns.
+
+    Each run adds Gaussian noise whose standard deviation is the local noise
+    estimate multiplied by ``perturbation_scale``. A run counts as a recovery
+    when a detected peak falls within ``match_tolerance`` samples of the original
+    candidate.
+    """
     rng = np.random.default_rng(seed)
     hits: list[int] = []
     offsets: list[float] = []
@@ -164,6 +183,7 @@ def parameter_robustness(
     smoothing_values: Iterable[int] = (1, 2, 5, 9),
     k_values: Iterable[float] = (8.0, 12.0, 15.96, 20.0, 24.0),
 ) -> tuple[float, np.ndarray, np.ndarray, np.ndarray]:
+    """Measure how often a candidate survives a grid of smoothing and threshold settings."""
     smooth_grid = np.asarray(list(smoothing_values), dtype=int)
     k_grid = np.asarray(list(k_values), dtype=float)
     matrix = np.zeros((len(smooth_grid), len(k_grid)), dtype=int)
@@ -189,6 +209,7 @@ def nearest_peak_structure(
     candidate_prominence: float | None = None,
     distance: int = 1,
 ) -> dict[str, Any]:
+    """Summarize nearby maxima and estimate overlap or duplicate risk around a candidate."""
     # Ignore tiny noise maxima. Structural ambiguity should refer to neighboring
     # candidate-like maxima, not every one-sample fluctuation.
     prominence_threshold = max(
@@ -222,6 +243,7 @@ def nearest_peak_structure(
 
 
 def baseline_drift_score(smooth: np.ndarray, candidate_index: int, radius: int = 60) -> float:
+    """Estimate normalized local baseline slope around the candidate."""
     left = max(0, int(candidate_index) - int(radius))
     right = min(len(smooth), int(candidate_index) + int(radius) + 1)
     y = np.asarray(smooth[left:right], dtype=float)
@@ -234,6 +256,7 @@ def baseline_drift_score(smooth: np.ndarray, candidate_index: int, radius: int =
 
 
 def segment_boundary_distance(candidate_index: int, segment_points: int, overlap_points: int) -> int:
+    """Return distance in samples from a candidate to the nearest segment step boundary."""
     step = max(1, int(segment_points) - int(overlap_points))
     index = int(candidate_index)
     lower = (index // step) * step
@@ -248,6 +271,7 @@ def evidence_agreement(
     robustness: float,
     overlap_flag: bool,
 ) -> dict[str, str]:
+    """Summarize whether detectability, stability, robustness, and structure agree."""
     detectability_state = "High" if score >= boundary else "Low"
     stability_state = "High" if stability >= 0.70 else "Low"
     robustness_state = "High" if robustness >= 0.60 else "Low"
@@ -278,6 +302,7 @@ def algorithmic_recommendation(
     overlap_flag: bool,
     duplicate_risk: str,
 ) -> str:
+    """Convert the separate evidence measures into an accept, defer, or reject case label."""
     margin = score - boundary
     if duplicate_risk == "High":
         return "Reject"
@@ -293,6 +318,7 @@ def algorithmic_recommendation(
 
 
 def provenance_json(config: DetectorConfig, extra: dict[str, Any] | None = None) -> str:
+    """Serialize the evidence-generation settings so each case can be traced later."""
     payload = {
         "smoothing_method": "moving_average",
         "smooth_window": config.smooth_window,
