@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+"""Validate the case-bank table and its linked signal arrays before study use."""
+
 from __future__ import annotations
 
 import argparse
@@ -16,6 +18,7 @@ from src.data_loader import load_signal_bundle  # noqa: E402
 
 
 def validate(case_bank: Path, signals: Path) -> list[str]:
+    """Return validation errors for schema, pairing, evidence ranges, and signal consistency."""
     errors: list[str] = []
     frame = pd.read_csv(case_bank)
     required = {
@@ -68,6 +71,7 @@ def validate(case_bank: Path, signals: Path) -> list[str]:
 
 
 def main() -> None:
+    """Parse paths, run all case-bank checks, and exit nonzero when validation fails."""
     parser = argparse.ArgumentParser()
     parser.add_argument("--case-bank", type=Path, default=ROOT / "data" / "demo" / "case_bank.csv")
     parser.add_argument("--signals", type=Path, default=ROOT / "data" / "demo" / "signals.npz")
