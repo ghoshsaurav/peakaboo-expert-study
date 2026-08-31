@@ -1,3 +1,5 @@
+"""Create deterministic participant assignments for the three-condition expert study."""
+
 from __future__ import annotations
 
 import hashlib
@@ -19,6 +21,7 @@ CANONICAL_CONDITION_ORDER = [
 
 
 def stable_int(text: str) -> int:
+    """Convert text into a stable integer used for deterministic assignment tie-breaking."""
     digest = hashlib.sha256(text.encode("utf-8")).hexdigest()
     return int(digest[:16], 16)
 
@@ -109,10 +112,11 @@ def _select_challenging_cases(
     used_categories: set[str] = set()
 
     def choose_from(source: str, target: int) -> None:
+        """Choose difficult cases from one source while favoring category diversity."""
         candidates = pool[pool["source_type"].astype(str) == source].copy()
         if candidates.empty:
             return
-        # Deterministic tie-breaking that rotates exposure across participants.
+        # Deterministic tie-breaking rotates exposure across participants.
         candidates["tie_break"] = candidates["case_id"].astype(str).map(
             lambda case_id: stable_int(f"{global_seed}|{participant_id}|{case_id}") % 1_000_000
         )
@@ -188,6 +192,12 @@ def assign_cases(
     global_seed: int = 20260805,
     trials_per_condition: int = 3,
 ) -> pd.DataFrame:
+    """Assign one challenging case trio and repeat it across all enabled conditions.
+
+    The function enforces the fixed condition order, three cases per condition,
+    unique case pairs, and the explicit AI-accept recommendation in the final
+    recommendation condition.
+    """
     enabled = condition_order(participant_id, list(enabled_conditions), global_seed)
     if not enabled:
         raise ValueError("At least one condition must be enabled")
