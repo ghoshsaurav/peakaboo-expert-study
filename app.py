@@ -1,3 +1,10 @@
+"""Streamlit entry point for the Peak-a-boo expert study.
+
+The app loads study configuration and case data, opens either the configured
+PostgreSQL database or local SQLite database, and routes users to the participant
+study or password-protected researcher dashboard.
+"""
+
 from __future__ import annotations
 
 import os
