@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+"""Export study tables with participant IDs replaced by salted pseudonyms."""
+
 from __future__ import annotations
 
 import argparse
@@ -18,10 +20,12 @@ from src.metrics import analysis_ready_trials  # noqa: E402
 
 
 def pseudonym(value: str, salt: str) -> str:
+    """Create a stable short participant code from an ID and caller-provided salt."""
     return "P-" + hashlib.sha256(f"{salt}|{value}".encode("utf-8")).hexdigest()[:10]
 
 
 def main() -> None:
+    """Load study tables, remove participant IDs, and write anonymized CSV exports."""
     parser = argparse.ArgumentParser()
     parser.add_argument("--database", type=Path)
     parser.add_argument("--output-dir", type=Path, default=ROOT / "data" / "exports")
