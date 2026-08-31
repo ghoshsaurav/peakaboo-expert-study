@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+"""Build the 48-case expert-study bank from synthetic and approved research signals."""
+
 from __future__ import annotations
 
 import argparse
@@ -37,10 +39,12 @@ from src.evidence import (  # noqa: E402
 
 
 def stable_seed(text: str) -> int:
+    """Create a deterministic random seed from case-identifying text."""
     return int(hashlib.sha256(text.encode("utf-8")).hexdigest()[:8], 16)
 
 
 def bool_value(value: Any) -> bool:
+    """Normalize string or scalar values into booleans when reading metadata."""
     return bool(value) if not isinstance(value, str) else value.lower() in {"1", "true", "yes"}
 
 
@@ -58,6 +62,7 @@ def compute_case(
     reference_interval: tuple[float, float] | None = None,
     extra_provenance: dict[str, Any] | None = None,
 ) -> tuple[dict[str, Any], dict[str, np.ndarray]]:
+    """Compute all study evidence and stored signal arrays for one candidate case."""
     processed = preprocess_signal(raw_values, config.smooth_window, config.noise_window)
     local_candidate = int(np.clip(candidate_index, 2, len(raw_values) - 3))
     local_search = np.arange(max(1, local_candidate - 3), min(len(raw_values) - 1, local_candidate + 4))
@@ -191,10 +196,12 @@ def compute_case(
 
 
 def gaussian(x: np.ndarray, center: float, width: float, amplitude: float) -> np.ndarray:
+    """Return a Gaussian component used to create a controlled synthetic case."""
     return amplitude * np.exp(-0.5 * ((x - center) / width) ** 2)
 
 
 def synthetic_case_signal(category: str, replicate: int) -> tuple[np.ndarray, np.ndarray, int, str, DetectorConfig, dict[str, Any]]:
+    """Generate one controlled synthetic signal for a named ambiguity/failure category."""
     rng = np.random.default_rng(stable_seed(f"synthetic|{category}|{replicate}"))
     n = 401
     time_values = np.linspace(8.0, 12.0, n)
@@ -271,6 +278,7 @@ def synthetic_case_signal(category: str, replicate: int) -> tuple[np.ndarray, np
 
 
 def build_synthetic_cases() -> tuple[list[dict[str, Any]], dict[str, np.ndarray]]:
+    """Build 24 synthetic study cases spanning the planned evidence-conflict categories."""
     categories = [
         "clear_supported",
         "clear_unsupported",
@@ -317,6 +325,7 @@ def build_synthetic_cases() -> tuple[list[dict[str, Any]], dict[str, np.ndarray]
 
 
 def valid_labels(path: Path) -> pd.DataFrame:
+    """Load the source reference workbook and keep rows with valid time intervals."""
     labels = pd.read_excel(path)
     required = {"ChannelId", "StartTime", "EndTime", "RetentionTime"}
     missing = required - set(labels.columns)
@@ -334,6 +343,7 @@ def valid_labels(path: Path) -> pd.DataFrame:
 
 
 def preliminary_real_pool(h5_path: Path, label_path: Path, max_channels: int = 120) -> list[dict[str, Any]]:
+    """Scan approved research channels and create a preliminary pool of candidate metadata."""
     labels = valid_labels(label_path)
     labels_by_channel = {channel: frame.copy() for channel, frame in labels.groupby("ChannelId")}
     config = DetectorConfig(perturbation_runs=20)
@@ -400,6 +410,7 @@ def preliminary_real_pool(h5_path: Path, label_path: Path, max_channels: int = 1
 
 
 def select_real_candidates(pool: list[dict[str, Any]], count: int = 24) -> list[dict[str, Any]]:
+    """Select a diverse set of research candidates emphasizing difficult evidence patterns."""
     frame = pd.DataFrame(pool)
     if frame.empty:
         return []
@@ -408,6 +419,7 @@ def select_real_candidates(pool: list[dict[str, Any]], count: int = 24) -> list[
     used: set[str] = set()
 
     def add(subset: pd.DataFrame, n: int, sort_column: str | None = None, ascending: bool = True) -> None:
+        """Add up to ``n`` previously unused candidates from a prioritized subset."""
         nonlocal selected
         subset = subset.loc[~subset["selection_key"].isin(used)].copy()
         if sort_column:
@@ -431,6 +443,7 @@ def select_real_candidates(pool: list[dict[str, Any]], count: int = 24) -> list[
 
 
 def build_real_cases(h5_path: Path, label_path: Path, count: int = 24) -> tuple[list[dict[str, Any]], dict[str, np.ndarray]]:
+    """Build study records and self-contained signal windows for selected research candidates."""
     pool = preliminary_real_pool(h5_path, label_path)
     selected = select_real_candidates(pool, count=count)
     if len(selected) < count:
@@ -476,6 +489,7 @@ def build_real_cases(h5_path: Path, label_path: Path, count: int = 24) -> tuple[
 
 
 def assign_pairs(records: list[dict[str, Any]]) -> None:
+    """Assign approximate two-case matching groups separately within synthetic and research sources."""
     for source_type in ("synthetic", "real"):
         source_records = [record for record in records if record["source_type"] == source_type]
         # Sort by category, then evidence values so paired cases are approximately matched but not identical.
@@ -494,6 +508,7 @@ def assign_pairs(records: list[dict[str, Any]]) -> None:
 
 
 def validate_records(records: list[dict[str, Any]]) -> None:
+    """Assert the final bank contains 48 unique, paired, pilot-ready cases with balanced sources."""
     frame = pd.DataFrame(records)
     if len(frame) != 48:
         raise AssertionError(f"Expected 48 cases, found {len(frame)}")
@@ -510,6 +525,7 @@ def validate_records(records: list[dict[str, Any]]) -> None:
 
 
 def main() -> None:
+    """Build, validate, and save case metadata, signal arrays, and a summary manifest."""
     parser = argparse.ArgumentParser(description="Build the 48-case Peak-a-boo expert-study case bank.")
     parser.add_argument("--h5", type=Path, required=True, help="Path to chromatograms.h5")
     parser.add_argument("--labels", type=Path, required=True, help="Path to peak_df.xlsx")
