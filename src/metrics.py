@@ -1,3 +1,5 @@
+"""Create analysis-ready trial data and descriptive study summaries."""
+
 from __future__ import annotations
 
 import json
@@ -13,6 +15,7 @@ DECISION_DEFER = 3
 
 
 def _safe_json_list(value: Any) -> list[str]:
+    """Normalize a stored JSON/list value into a list of strings."""
     if isinstance(value, list):
         return [str(item) for item in value]
     if value is None or (isinstance(value, float) and np.isnan(value)):
@@ -25,6 +28,7 @@ def _safe_json_list(value: Any) -> list[str]:
 
 
 def _evidence_code(label: str) -> str:
+    """Convert an evidence label into a stable analysis-column name."""
     return (
         "used_"
         + label.lower()
@@ -37,6 +41,7 @@ def _evidence_code(label: str) -> str:
 
 
 def analysis_ready_trials(assignments: pd.DataFrame, responses: pd.DataFrame) -> pd.DataFrame:
+    """Join assignments and responses and derive evidence, alignment, calibration, and reliance fields."""
     if assignments.empty:
         return pd.DataFrame()
     assignment = assignments.copy()
@@ -120,6 +125,7 @@ def analysis_ready_trials(assignments: pd.DataFrame, responses: pd.DataFrame) ->
 
 
 def descriptive_summary(trials: pd.DataFrame) -> dict[str, Any]:
+    """Return overall counts, decision rates, confidence, calibration, and error-related rates."""
     if trials.empty:
         return {
             "participants": 0,
@@ -161,6 +167,7 @@ def descriptive_summary(trials: pd.DataFrame) -> dict[str, Any]:
 
 
 def condition_summary(trials: pd.DataFrame) -> pd.DataFrame:
+    """Summarize decisions and outcome measures separately for each study condition."""
     if trials.empty or "condition" not in trials:
         return pd.DataFrame()
     records: list[dict[str, Any]] = []
@@ -200,6 +207,7 @@ def condition_summary(trials: pd.DataFrame) -> pd.DataFrame:
 
 
 def evidence_frequency(trials: pd.DataFrame) -> pd.DataFrame:
+    """Count how often each displayed evidence type was selected as influential."""
     evidence_columns = [column for column in trials.columns if column.startswith("used_")]
     if not evidence_columns:
         return pd.DataFrame(columns=["evidence", "count", "rate"])
@@ -212,6 +220,7 @@ def evidence_frequency(trials: pd.DataFrame) -> pd.DataFrame:
 
 
 def reliance_summary(trials: pd.DataFrame) -> pd.DataFrame:
+    """Count appropriate reliance, over-reliance, under-reliance, and appropriate skepticism."""
     if "reliance_category" not in trials.columns:
         return pd.DataFrame(columns=["reliance_category", "count", "rate"])
     subset = trials.dropna(subset=["reliance_category"]).copy()
@@ -223,6 +232,7 @@ def reliance_summary(trials: pd.DataFrame) -> pd.DataFrame:
 
 
 def conflict_summary(trials: pd.DataFrame) -> pd.DataFrame:
+    """Compare outcomes for evidence-conflict and evidence-agreement cases within conditions."""
     if trials.empty or "case_has_evidence_conflict" not in trials.columns:
         return pd.DataFrame()
     completed = trials.dropna(subset=["decision_code"]).copy()
