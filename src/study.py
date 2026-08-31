@@ -1,3 +1,5 @@
+"""Participant-facing workflow for the three-condition Peak-a-boo expert study."""
+
 from __future__ import annotations
 
 import time
@@ -46,7 +48,7 @@ from .visualization import (
 
 
 def render_key_terms(term_keys: list[str] | None = None) -> None:
-    """Clickable plain-language help shown consistently on participant pages."""
+    """Show clickable plain-language help consistently on participant pages."""
     keys = term_keys or [
         "candidate",
         "chromatogram",
@@ -73,6 +75,7 @@ def render_key_terms(term_keys: list[str] | None = None) -> None:
 
 
 def _save_multi(store: StudyStore, session_id: str, section: str, code: str, values: list[str]) -> None:
+    """Save a multi-select questionnaire response in coded, labeled, and JSON forms."""
     store.save_survey_response(
         session_id=session_id,
         section=section,
@@ -84,6 +87,7 @@ def _save_multi(store: StudyStore, session_id: str, section: str, code: str, val
 
 
 def _save_single(store: StudyStore, session_id: str, section: str, code: str, value: Any) -> None:
+    """Save one questionnaire response with a stable machine code and display label."""
     store.save_survey_response(
         session_id=session_id,
         section=section,
@@ -95,6 +99,7 @@ def _save_single(store: StudyStore, session_id: str, section: str, code: str, va
 
 
 def _section_complete(response_map: dict[tuple[str, str], dict[str, Any]], section: str, sentinel: str) -> bool:
+    """Check whether the sentinel response marking one survey section complete is present."""
     return (section, sentinel) in response_map
 
 
@@ -104,6 +109,7 @@ def _initialize_participant(
     bank: pd.DataFrame,
     store: StudyStore,
 ) -> tuple[str, pd.DataFrame]:
+    """Create or resume a participant session and persist its deterministic assignment."""
     enabled_conditions = list(config["study"]["enabled_conditions"])
     order = condition_order(participant_id, enabled_conditions, int(config["study"]["global_seed"]))
     session_id = store.get_or_create_session(
@@ -129,6 +135,7 @@ def _initialize_participant(
 
 
 def render_entry(config: dict[str, Any], bank: pd.DataFrame, store: StudyStore) -> None:
+    """Render participant ID, consent, and begin/resume controls."""
     st.title(config["study"]["title"])
     render_key_terms()
     st.write(
@@ -154,6 +161,7 @@ def render_entry(config: dict[str, Any], bank: pd.DataFrame, store: StudyStore) 
 
 
 def render_background(session_id: str, store: StudyStore) -> None:
+    """Collect non-identifying background and chromatography-experience information."""
     st.header("About your experience")
     render_key_terms()
     st.caption("These questions describe the participant group. They do not ask for identifying information.")
@@ -199,6 +207,7 @@ def render_background(session_id: str, store: StudyStore) -> None:
 
 
 def render_current_practice(session_id: str, store: StudyStore) -> None:
+    """Collect formative information about how the participant currently reviews difficult peaks."""
     st.header("How you review peaks now")
     render_key_terms()
     st.write("These questions examine how analysts currently review difficult candidates.")
@@ -254,6 +263,7 @@ def render_current_practice(session_id: str, store: StudyStore) -> None:
 
 
 def render_tutorial(session_id: str, store: StudyStore) -> None:
+    """Teach the evidence terms, administer four practice questions, and show the answer key."""
     st.header("Quick guide and four practice questions")
     render_key_terms()
     st.markdown(
@@ -330,6 +340,7 @@ def render_tutorial(session_id: str, store: StudyStore) -> None:
 
 
 def _interpret_case(case: dict[str, Any]) -> dict[str, str]:
+    """Convert numeric evidence values into participant-facing plain-language summaries."""
     margin = float(case["weber_margin"])
     stability = float(case["stability"])
     robustness = float(case["parameter_robustness"])
@@ -342,6 +353,7 @@ def _interpret_case(case: dict[str, Any]) -> dict[str, str]:
 
 
 def render_peakaboo_evidence(case: dict[str, Any], bundle: Any, condition: str) -> dict[str, bool]:
+    """Render decomposed evidence and record which optional evidence sections were opened."""
     safe = participant_case(case)
     interpretations = _interpret_case(safe)
     if condition == CONDITION_RECOMMENDATION:
@@ -451,6 +463,7 @@ def render_trial(
     paths: Paths,
     explanation_ids: set[str],
 ) -> None:
+    """Render the next incomplete review trial and save its decision and interaction record."""
     completed = store.completed_trial_ids(session_id)
     remaining = assignment.loc[~assignment["trial_id"].astype(str).isin(completed)].copy()
     if remaining.empty:
@@ -605,6 +618,7 @@ def render_trial(
 
 
 def render_post_condition(session_id: str, condition: str, store: StudyStore) -> None:
+    """Collect short usability and reliance ratings after one condition block is complete."""
     label = FINAL_CONDITION_LABELS.get(condition, condition)
     section = f"post_{condition}"
     st.header(f"Quick check after {label}")
@@ -650,6 +664,7 @@ def render_post_condition(session_id: str, condition: str, store: StudyStore) ->
 
 
 def render_final(session_id: str, enabled_conditions: list[str], store: StudyStore) -> None:
+    """Collect final cross-condition judgments and close the participant session."""
     st.header("Final questions")
     render_key_terms()
     comparison_options = [FINAL_CONDITION_LABELS[item] for item in enabled_conditions] + ["No clear difference"]
@@ -693,7 +708,6 @@ def render_final(session_id: str, enabled_conditions: list[str], store: StudySto
         st.rerun()
 
 
-
 def render_debrief_answers(session_id: str, assignment: pd.DataFrame, store: StudyStore) -> None:
     """Show comparison answers only after all nine decisions are complete."""
     st.subheader("Answer review")
@@ -721,7 +735,9 @@ def render_debrief_answers(session_id: str, assignment: pd.DataFrame, store: Stu
         st.write(TERM_HELP["reference"])
     st.dataframe(pd.DataFrame(records), use_container_width=True, hide_index=True)
 
+
 def render_participant_study(config: dict[str, Any], paths: Paths, bank: pd.DataFrame, store: StudyStore) -> None:
+    """Route a participant through entry, surveys, practice, trials, block checks, and debrief."""
     if "session_id" not in st.session_state:
         render_entry(config, bank, store)
         return
