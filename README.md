@@ -8,7 +8,7 @@
 
 Peak-a-boo studies how people review difficult chromatographic peak candidates when an automated system provides different amounts of information. The study uses the same challenging cases across three fixed conditions: **signal only → separate evidence → AI says peak**. Participants make accept, reject, or defer decisions, report confidence, and identify the evidence that influenced them. The study is designed to measure how decomposed evidence and an explicit AI recommendation affect human review, including appropriate reliance, over-reliance, under-reliance, uncertainty, and decision changes. Reference annotations are used as comparison evidence rather than assumed to be perfect chemical ground truth.
 
-This repository is one part of the broader Peak-a-boo project. The public workbench is maintained at [`washuvis/peak-a-boo`](https://github.com/washuvis/peak-a-boo), while the private internal analytical implementation is maintained at [`washuvis/chromato-peak-app`](https://github.com/washuvis/chromato-peak-app).
+This repository is one part of the broader Peak-a-boo project. All related repositories are maintained under the VIBE Lab `washuvis` GitHub organization. The public workbench is [`washuvis/peak-a-boo`](https://github.com/washuvis/peak-a-boo), and the private internal analytical implementation is [`washuvis/chromato-peak-app`](https://github.com/washuvis/chromato-peak-app).
 
 ## Study Design at a Glance
 
@@ -31,7 +31,7 @@ Each trial records:
 
 The final AI condition gives an explicit recommendation that the candidate is a peak and should be accepted. The comparison answer is hidden until all nine decisions are complete so it does not influence later conditions.
 
-## Repository Structure
+## Repo Structure
 
 - `app.py`
   - Main Streamlit entry point.
@@ -79,6 +79,7 @@ The final AI condition gives an explicit recommendation that the candidate is a 
   - `analyze_results.py`: generates research-question-aligned analysis tables from study results.
   - `generate_paper_figures.py`: generates descriptive figures for the paper.
   - `data_dictionary.csv`: describes fields used in the analysis outputs.
+  - `qualitative_codebook.csv`: defines qualitative coding categories used for open-text responses.
   - `outputs/`: generated analysis tables and model summaries from demonstration or analysis runs.
   - `paper_figures/`: generated PDF/SVG paper figures.
 
@@ -106,18 +107,16 @@ The final AI condition gives an explicit recommendation that the candidate is a 
 - `requirements.txt`
   - Python dependencies and supported version ranges.
 
+- `.github/workflows/tests.yml`
+  - GitHub Actions workflow that installs the environment, runs unit tests, validates the case bank, and compiles the Python source.
+
 ## Getting Started
 
-### Prerequisites and Needed Materials
+### Prerequisites & Needed Materials
 
-You need:
+You need Python, `pip`, Git, and a terminal or command prompt. The current GitHub Actions workflow validates the repository with **Python 3.11**.
 
-- Python 3
-- `pip`
-- Git
-- a terminal or command prompt
-
-This repository does not currently pin one specific Python interpreter version. Supported package ranges are listed in `requirements.txt`:
+Supported package ranges are listed in `requirements.txt`:
 
 ```text
 streamlit>=1.42,<2
@@ -135,30 +134,29 @@ SQLAlchemy>=2.0,<3
 psycopg[binary]>=3.2,<4
 ```
 
-The repository already contains a demonstration case bank under `data/demo/`. Building a new case bank from source research data requires access to the appropriate chromatogram HDF5 file and reference workbook.
+The repository already contains a demonstration case bank under `data/demo/`. Building a new case bank from source research data requires access to the approved chromatogram HDF5 file and reference workbook.
 
 ### Installation
 
 Clone the repository:
 
 ```bash
-git clone https://github.com/ghoshsaurav/peakaboo-expert-study.git
+git clone https://github.com/washuvis/peakaboo-expert-study.git
 cd peakaboo-expert-study
+python -m venv .venv
 ```
 
-Create a virtual environment.
+Activate the environment.
 
 macOS or Linux:
 
 ```bash
-python -m venv .venv
 source .venv/bin/activate
 ```
 
 Windows PowerShell:
 
 ```powershell
-python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 ```
 
@@ -168,18 +166,18 @@ Install the required packages:
 python -m pip install -r requirements.txt
 ```
 
-### Run the Study Application
+### Usage
 
-Start the Streamlit application:
+Run the study application:
 
 ```bash
-streamlit run app.py
+python -m streamlit run app.py
 ```
 
 The sidebar provides two modes:
 
-- **Participant study**: runs consent, background questions, practice, the nine review decisions, condition ratings, final questions, and end-of-study review.
-- **Researcher dashboard**: provides researcher-only study-management and export views.
+- **Participant study**: consent, background questions, practice, nine review decisions, condition ratings, final questions, and completion.
+- **Researcher dashboard**: researcher-only study-management and export views.
 
 The default researcher password is configured in `config/study_config.yaml`. For a deployed study, set a private environment variable instead of relying on the default value:
 
@@ -189,25 +187,15 @@ export PEAKABOO_RESEARCHER_PASSWORD='your-password'
 
 Do not commit real deployment passwords to GitHub.
 
-### Database Storage
+The application uses `DATABASE_URL` when that environment variable is set. This supports a PostgreSQL deployment. If `DATABASE_URL` is not set, the application uses the local database path defined in `config/study_config.yaml`. Participant result databases must not be committed to this public repository.
 
-The application uses `DATABASE_URL` when that environment variable is set. This supports a PostgreSQL deployment such as Neon. If `DATABASE_URL` is not set, the application uses the local database path defined in `config/study_config.yaml`.
-
-Participant result databases must not be committed to this public repository. The tracked `data/results/` directory contains only `.gitkeep`.
-
-### Validate the Case Bank
-
-Run:
+Validate the case bank:
 
 ```bash
 python scripts/validate_case_bank.py
 ```
 
-The bundled package contains 48 demonstration cases and self-contained signal windows. The assignment logic excludes categories beginning with `clear_` and prioritizes difficult cases using information that is not shown to participants.
-
-### Rebuild the Case Bank
-
-When approved source research data are available:
+Rebuild the case bank when approved source research data are available:
 
 ```bash
 python scripts/build_case_bank.py \
@@ -217,9 +205,7 @@ python scripts/build_case_bank.py \
 
 Do not commit private source chromatograms or reference workbooks to this public repository.
 
-### Create Demonstration Results
-
-Create a fresh demonstration database with 12 simulated participants:
+Create demonstration results:
 
 ```bash
 python scripts/seed_demo_results.py
@@ -239,9 +225,7 @@ python scripts/reset_demo.py --yes
 
 These scripts are for software testing and figure development. Demonstration results are not human-subject study findings.
 
-### Export Anonymized Results
-
-Use:
+Export anonymized results:
 
 ```bash
 python scripts/export_anonymized_results.py
@@ -249,9 +233,7 @@ python scripts/export_anonymized_results.py
 
 Review the exported fields before sharing any result file. Follow the approved study and data-management procedures for real participant data.
 
-### Run the Analysis
-
-Generate research-question-aligned tables:
+Generate research-question-aligned analysis tables:
 
 ```bash
 python analysis/analyze_results.py
@@ -263,29 +245,27 @@ Generate descriptive paper figures:
 python analysis/generate_paper_figures.py analysis/outputs/analysis_ready_trials.csv
 ```
 
-### Run the Tests
-
-Run:
+Run the tests:
 
 ```bash
-pytest
+pytest -q
 ```
 
-The tests cover the repeated-case assignment, fixed condition order, difficult-case selection, evidence calculations, explicit AI recommendation, structured response logging, privacy behavior, questionnaires, and same-case analysis.
+The CI workflow also runs:
+
+```bash
+python scripts/validate_case_bank.py
+python -m compileall -q src analysis scripts tests app.py
+```
+
+The latest completed validation record reports **16 passing tests**, successful case-bank validation, and successful Python compilation. See `VALIDATION.md` for details.
 
 ## Related Repositories
 
-- [`washuvis/peak-a-boo`](https://github.com/washuvis/peak-a-boo)
-  - Public synthetic Peak-a-boo workbench for inspecting uncertain peak detections and review evidence.
-
-- [`washuvis/chromato-peak-app`](https://github.com/washuvis/chromato-peak-app)
-  - Private internal analytical implementation containing research data, classical/ML peak-detection code, and the analysis dashboard.
-
-- [`ghoshsaurav/peakaboo-expert-study`](https://github.com/ghoshsaurav/peakaboo-expert-study)
-  - This repository; the expert-study application and analysis workflow.
-
-- [`ghoshsaurav/peak-detection`](https://github.com/ghoshsaurav/peak-detection)
-  - Earlier exploratory peak-detection prototype that predates the current Peak-a-boo package structure.
+- [`washuvis/peak-a-boo`](https://github.com/washuvis/peak-a-boo) — public synthetic Peak-a-boo workbench for inspecting uncertain peak detections and review evidence.
+- [`washuvis/chromato-peak-app`](https://github.com/washuvis/chromato-peak-app) — private internal analytical implementation containing research data, classical/ML peak-detection code, and the analysis dashboard.
+- [`washuvis/peakaboo-expert-study`](https://github.com/washuvis/peakaboo-expert-study) — this repository; the expert-study application and analysis workflow.
+- [`washuvis/peak-detection`](https://github.com/washuvis/peak-detection) — historical early scaffold that predates the current Peak-a-boo package structure.
 
 ## Main Technical Libraries
 
@@ -305,7 +285,7 @@ The case bank may be rebuilt from research chromatograms when the project team h
 
 Reference annotations are comparison evidence. Analysis and reporting should use terms such as **reference-aligned** and **reference-discordant** when that distinction is more accurate than calling a participant decision simply correct or incorrect.
 
-## Future Work
+## Future Works
 
 Useful next steps include:
 
@@ -322,4 +302,4 @@ Useful next steps include:
 
 Before changing the study design, review `STUDY_DESIGN.md`, `SURVEY_QUESTION_MAP.md`, and the relevant tests. Changes to condition order, repeated-case logic, AI recommendation wording, response fields, or case-selection rules can change the meaning of the study and should be documented in `CHANGELOG.md`.
 
-When the result schema changes, update `analysis/data_dictionary.csv`, the analysis scripts, and the database/export code together. Run `pytest` and `python scripts/validate_case_bank.py` before using a changed version for data collection.
+When the result schema changes, update `analysis/data_dictionary.csv`, `analysis/qualitative_codebook.csv`, the analysis scripts, and the database/export code together. Run `pytest -q` and `python scripts/validate_case_bank.py` before using a changed version for data collection.
