@@ -1,14 +1,10 @@
 # Peak-a-boo Expert Study
 
-## Status
-
-**In progress.** This repository contains the current expert-study platform for the Peak-a-boo research project. The study software, case-bank workflow, response storage, analysis scripts, and tests are implemented, but the research study and resulting manuscript are still in progress. A final peer-reviewed publication is not yet linked here.
-
 ## Introduction
 
 Peak-a-boo studies how people review difficult chromatographic peak candidates when an automated system provides different amounts of information. The study uses the same challenging cases across three fixed conditions: **signal only → separate evidence → AI says peak**. Participants make accept, reject, or defer decisions, report confidence, and identify the evidence that influenced them. The study is designed to measure how decomposed evidence and an explicit AI recommendation affect human review, including appropriate reliance, over-reliance, under-reliance, uncertainty, and decision changes. Reference annotations are used as comparison evidence rather than assumed to be perfect chemical ground truth.
 
-This repository is one part of the broader Peak-a-boo project. All related repositories are maintained under the VIBE Lab `washuvis` GitHub organization. The public workbench is [`washuvis/peak-a-boo`](https://github.com/washuvis/peak-a-boo), and the private internal analytical implementation is [`washuvis/chromato-peak-app`](https://github.com/washuvis/chromato-peak-app).
+This repository is one part of the broader Peak-a-boo project. All related repositories are maintained under the VIBE Lab `washuvis` GitHub organization. The public workbench is [`washuvis/peak-a-boo`](https://github.com/washuvis/peak-a-boo).
 
 ## Study Design at a Glance
 
@@ -263,7 +259,6 @@ The latest completed validation record reports **16 passing tests**, successful 
 ## Related Repositories
 
 - [`washuvis/peak-a-boo`](https://github.com/washuvis/peak-a-boo) — public synthetic Peak-a-boo workbench for inspecting uncertain peak detections and review evidence.
-- [`washuvis/chromato-peak-app`](https://github.com/washuvis/chromato-peak-app) — private internal analytical implementation containing research data, classical/ML peak-detection code, and the analysis dashboard.
 - [`washuvis/peakaboo-expert-study`](https://github.com/washuvis/peakaboo-expert-study) — this repository; the expert-study application and analysis workflow.
 - [`washuvis/peak-detection`](https://github.com/washuvis/peak-detection) — historical early scaffold that predates the current Peak-a-boo package structure.
 
@@ -284,19 +279,6 @@ The files under `data/demo/` are demonstration study assets. Real participant re
 The case bank may be rebuilt from research chromatograms when the project team has approved access to those files. Source research data should remain in their approved private location rather than being copied into this public study repository.
 
 Reference annotations are comparison evidence. Analysis and reporting should use terms such as **reference-aligned** and **reference-discordant** when that distinction is more accurate than calling a participant decision simply correct or incorrect.
-
-## Future Works
-
-Useful next steps include:
-
-- complete expert data collection and evaluate how decisions change across the three information conditions;
-- test whether separate evidence improves review decisions or creates additional confusion;
-- measure when an explicit AI recommendation produces appropriate reliance, over-reliance, or under-reliance;
-- examine whether evidence disagreement is especially useful for identifying cases that need human oversight;
-- evaluate differences by participant expertise when the sample supports that analysis;
-- refine case selection and study wording based on pilot feedback without exposing hidden comparison labels to participants;
-- maintain a clear separation between demonstration results and real participant data; and
-- keep study measures and analysis scripts synchronized with the paper's research questions.
 
 ## Maintenance Notes
 

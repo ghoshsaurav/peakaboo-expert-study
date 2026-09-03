@@ -11,7 +11,7 @@ Validated on 2026-09-01 using GitHub Actions on Python 3.11 after the final repo
 - Every demo session uses exactly three unique cases repeated across all three conditions.
 - All demo sessions use the fixed order: baseline → separate evidence → AI peak mark.
 - Every final-condition demo trial records the displayed recommendation as `Accept`.
-- The README now uses the current `washuvis` repository locations and follows the VIBE Lab documentation headings for repository structure, prerequisites, installation, usage, and future work.
+- The README now uses the current `washuvis` repository locations and follows the VIBE Lab documentation headings for repository structure, prerequisites, installation, and usage.
 
 Continuous validation is defined in `.github/workflows/tests.yml` and runs on pushes and pull requests.
 
